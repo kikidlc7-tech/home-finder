@@ -299,6 +299,17 @@
     text-transform:uppercase;
   }
   .card-tag.venta{background:var(--green); color:#F6F3E9;}
+  .price-tag{
+    position:absolute; top:12px; right:12px;
+    font-size:0.7rem; font-weight:800; letter-spacing:.03em;
+    padding:4px 10px; border-radius:100px; text-transform:uppercase;
+    background:var(--paper-raised); color:var(--ink-soft); border:1px solid var(--line);
+  }
+  .price-tag.oportunidad{background:#2E7D4F; color:#fff; border-color:transparent;}
+  .price-tag.alto{background:var(--danger); color:#fff; border-color:transparent;}
+  .price-analysis{margin:14px 0 0; padding:12px 14px; border-radius:var(--radius-sm);
+    background:var(--green-tint); font-size:0.88rem; color:var(--ink-soft);}
+  .price-analysis strong{color:var(--ink);}
   .card-price{
     position:absolute; bottom:12px; left:12px;
     background:var(--paper-raised);
@@ -789,6 +800,7 @@
   <div class="modal" id="modalCard"></div>
 </div>
 
+<script src="price-tags.js"></script>
 <script>
 (function(){
   "use strict";
@@ -848,15 +860,32 @@
      PROPIEDADES DE EJEMPLO — sustituye por tus propiedades reales
   ========================================================= */
   var PROPERTIES = [
-    { id:1, titulo:"Casa contemporánea con jardín", tipo:"Casa", estado:"En venta", precio:4850000, ubicacion:"Colonia Del Valle, CDMX", direccion:"Av. Coyoacán 1500, Del Valle, CDMX", recamaras:3, banos:2, m2:180, terreno:210, descripcion:"Casa de dos niveles totalmente remodelada, con acabados de mármol, cocina integral y jardín privado. A 8 minutos del metro Etiopía.", amenidades:["Jardín privado","Cocina integral","2 estacionamientos","Bodega"], pos:{x:28,y:35} },
-    { id:2, titulo:"Depto con vista panorámica", tipo:"Departamento", estado:"Nueva", precio:5200000, ubicacion:"Roma Norte, CDMX", direccion:"Calle Orizaba 120, Roma Norte, CDMX", recamaras:2, banos:2, m2:98, terreno:0, descripcion:"Departamento de nueva construcción en torre con roof garden, gimnasio y seguridad 24h. Balcón con vista a la ciudad.", amenidades:["Roof garden","Gimnasio","Seguridad 24h","Elevador"], pos:{x:52,y:22} },
-    { id:3, titulo:"Terreno para desarrollo residencial", tipo:"Terreno", estado:"En venta", precio:2300000, ubicacion:"Zapopan, Jalisco", direccion:"Camino Real a Colotlán, Zapopan, Jalisco", recamaras:0, banos:0, m2:0, terreno:450, descripcion:"Terreno plano, uso de suelo habitacional, todos los servicios sobre la calle. Ideal para desarrollo de 3 casas o dúplex.", amenidades:["Uso habitacional","Servicios en calle","Esquina"], pos:{x:70,y:60} },
-    { id:4, titulo:"Casa familiar con alberca", tipo:"Casa", estado:"En venta", precio:7400000, ubicacion:"Puerta de Hierro, Zapopan", direccion:"Calzada Puerta de Hierro 88, Zapopan, Jalisco", recamaras:4, banos:3, m2:320, terreno:400, descripcion:"Residencia de una planta con alberca, jardín amplio y cuarto de servicio. Fraccionamiento privado con vigilancia.", amenidades:["Alberca","Cuarto de servicio","Vigilancia 24h","Jardín amplio"], pos:{x:38,y:70} },
-    { id:5, titulo:"Loft moderno cerca del centro", tipo:"Departamento", estado:"Apartada", precio:3100000, ubicacion:"Centro, Querétaro", direccion:"Andador 5 de Mayo 45, Centro, Querétaro", recamaras:1, banos:1, m2:62, terreno:0, descripcion:"Loft de diseño con doble altura y ventanales, a una cuadra de la plaza principal. Ideal para joven profesionista.", amenidades:["Doble altura","Ventanales","Zona peatonal"], pos:{x:80,y:38} },
-    { id:6, titulo:"Casa esquina con local comercial", tipo:"Casa", estado:"En venta", precio:6100000, ubicacion:"Juriquilla, Querétaro", direccion:"Blvd. de las Ciencias 210, Juriquilla, Querétaro", recamaras:3, banos:3, m2:210, terreno:230, descripcion:"Casa de esquina con espacio adaptable a local comercial en planta baja. Excelente para consultorio o despacho.", amenidades:["Local comercial","3 estacionamientos","Doble entrada"], pos:{x:15,y:52} },
-    { id:7, titulo:"Departamento familiar renovado", tipo:"Departamento", estado:"En venta", precio:2750000, ubicacion:"Providencia, Guadalajara", direccion:"Av. Providencia 900, Guadalajara, Jalisco", recamaras:2, banos:1, m2:85, terreno:0, descripcion:"Departamento en planta baja recién renovado, con patio privado y cochera techada. Cerca de escuelas y parque.", amenidades:["Patio privado","Cochera techada","Cerca de escuelas"], pos:{x:60,y:78} },
-    { id:8, titulo:"Terreno con vista a la sierra", tipo:"Terreno", estado:"En venta", precio:1450000, ubicacion:"El Marqués, Querétaro", direccion:"Carretera a Amazcala Km 4, El Marqués, Querétaro", recamaras:0, banos:0, m2:0, terreno:600, descripcion:"Terreno campestre con vista despejada a la sierra, ideal para casa de descanso. Acceso pavimentado.", amenidades:["Vista a la sierra","Acceso pavimentado","Zona campestre"], pos:{x:88,y:15} }
+    { id:1, zona:"CDMX", titulo:"Casa contemporánea con jardín", tipo:"Casa", estado:"En venta", precio:4850000, ubicacion:"Colonia Del Valle, CDMX", direccion:"Av. Coyoacán 1500, Del Valle, CDMX", recamaras:3, banos:2, m2:180, terreno:210, descripcion:"Casa de dos niveles totalmente remodelada, con acabados de mármol, cocina integral y jardín privado. A 8 minutos del metro Etiopía.", amenidades:["Jardín privado","Cocina integral","2 estacionamientos","Bodega"], pos:{x:28,y:35} },
+    { id:2, zona:"CDMX", titulo:"Depto con vista panorámica", tipo:"Departamento", estado:"Nueva", precio:5200000, ubicacion:"Roma Norte, CDMX", direccion:"Calle Orizaba 120, Roma Norte, CDMX", recamaras:2, banos:2, m2:98, terreno:0, descripcion:"Departamento de nueva construcción en torre con roof garden, gimnasio y seguridad 24h. Balcón con vista a la ciudad.", amenidades:["Roof garden","Gimnasio","Seguridad 24h","Elevador"], pos:{x:52,y:22} },
+    { id:3, zona:"Guadalajara", titulo:"Terreno para desarrollo residencial", tipo:"Terreno", estado:"En venta", precio:2300000, ubicacion:"Zapopan, Jalisco", direccion:"Camino Real a Colotlán, Zapopan, Jalisco", recamaras:0, banos:0, m2:0, terreno:450, descripcion:"Terreno plano, uso de suelo habitacional, todos los servicios sobre la calle. Ideal para desarrollo de 3 casas o dúplex.", amenidades:["Uso habitacional","Servicios en calle","Esquina"], pos:{x:70,y:60} },
+    { id:4, zona:"Guadalajara", titulo:"Casa familiar con alberca", tipo:"Casa", estado:"En venta", precio:7400000, ubicacion:"Puerta de Hierro, Zapopan", direccion:"Calzada Puerta de Hierro 88, Zapopan, Jalisco", recamaras:4, banos:3, m2:320, terreno:400, descripcion:"Residencia de una planta con alberca, jardín amplio y cuarto de servicio. Fraccionamiento privado con vigilancia.", amenidades:["Alberca","Cuarto de servicio","Vigilancia 24h","Jardín amplio"], pos:{x:38,y:70} },
+    { id:5, zona:"Querétaro", titulo:"Loft moderno cerca del centro", tipo:"Departamento", estado:"Apartada", precio:3100000, ubicacion:"Centro, Querétaro", direccion:"Andador 5 de Mayo 45, Centro, Querétaro", recamaras:1, banos:1, m2:62, terreno:0, descripcion:"Loft de diseño con doble altura y ventanales, a una cuadra de la plaza principal. Ideal para joven profesionista.", amenidades:["Doble altura","Ventanales","Zona peatonal"], pos:{x:80,y:38} },
+    { id:6, zona:"Querétaro", titulo:"Casa esquina con local comercial", tipo:"Casa", estado:"En venta", precio:6100000, ubicacion:"Juriquilla, Querétaro", direccion:"Blvd. de las Ciencias 210, Juriquilla, Querétaro", recamaras:3, banos:3, m2:210, terreno:230, descripcion:"Casa de esquina con espacio adaptable a local comercial en planta baja. Excelente para consultorio o despacho.", amenidades:["Local comercial","3 estacionamientos","Doble entrada"], pos:{x:15,y:52} },
+    { id:7, zona:"Guadalajara", titulo:"Departamento familiar renovado", tipo:"Departamento", estado:"En venta", precio:2750000, ubicacion:"Providencia, Guadalajara", direccion:"Av. Providencia 900, Guadalajara, Jalisco", recamaras:2, banos:1, m2:85, terreno:0, descripcion:"Departamento en planta baja recién renovado, con patio privado y cochera techada. Cerca de escuelas y parque.", amenidades:["Patio privado","Cochera techada","Cerca de escuelas"], pos:{x:60,y:78} },
+    { id:8, zona:"Querétaro", titulo:"Terreno con vista a la sierra", tipo:"Terreno", estado:"En venta", precio:1450000, ubicacion:"El Marqués, Querétaro", direccion:"Carretera a Amazcala Km 4, El Marqués, Querétaro", recamaras:0, banos:0, m2:0, terreno:600, descripcion:"Terreno campestre con vista despejada a la sierra, ideal para casa de descanso. Acceso pavimentado.", amenidades:["Vista a la sierra","Acceso pavimentado","Zona campestre"], pos:{x:88,y:15} }
   ];
+
+  var ETIQUETAS = PriceTags.calcularEtiquetasPrecio(PROPERTIES);
+
+  function priceTagHTML(p){
+    var e = ETIQUETAS[p.id];
+    if(!e || !e.etiqueta) return "";
+    var cls = e.etiqueta === "Buena oportunidad" ? "oportunidad" : (e.etiqueta === "Precio alto" ? "alto" : "");
+    return '<span class="price-tag ' + cls + '" data-etiqueta="' + e.etiqueta + '">' + e.etiqueta + '</span>';
+  }
+
+  function priceAnalysisHTML(p){
+    var e = ETIQUETAS[p.id];
+    if(!e) return "";
+    if(!e.etiqueta) return '<p class="price-analysis">Análisis de precio: ' + e.motivo + '.</p>';
+    var signo = e.diferenciaPct > 0 ? "+" : "";
+    return '<p class="price-analysis"><strong>' + e.etiqueta + '</strong> · ' + fmtMoney(e.precioM2) + '/m² vs. promedio de ' + fmtMoney(e.promedioComparables) + '/m² (' + e.numComparables + ' comparable' + (e.numComparables===1?'':'s') + ' en ' + p.zona + ') → ' + signo + e.diferenciaPct + '%.</p>';
+  }
 
   var els = {
     grid: document.getElementById("grid"),
@@ -918,6 +947,7 @@
           houseArt(p.id, p.tipo) +
           '<span class="card-tag ' + tagClass + '">' + p.estado + '</span>' +
           '<span class="card-price">' + fmtMoney(p.precio) + '</span>' +
+          priceTagHTML(p) +
         '</div>' +
         '<div class="card-body">' +
           '<h3>' + p.titulo + '</h3>' +
@@ -954,6 +984,7 @@
           (p.banos ? '<span>' + ICONS.bath + p.banos + ' baños</span>' : '') +
           '<span>' + ICONS.ruler + (p.m2 || p.terreno) + ' m² ' + (p.m2 ? 'construcción' : 'terreno') + '</span>' +
         '</div>' +
+        priceAnalysisHTML(p) +
         '<p class="modal-desc">' + p.descripcion + '</p>' +
         '<div class="chip-row">' + p.amenidades.map(function(a){ return '<span class="chip">' + a + '</span>'; }).join("") + '</div>' +
         '<div class="modal-actions">' +
