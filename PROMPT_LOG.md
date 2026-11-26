@@ -1,56 +1,58 @@
 # Bitácora de prompts — Home Finder · Assignment 2
 
-> Las secciones marcadas con ✍️ las escribes tú: la tarea pide que la especificación,
-> los veredictos y el caso de prueba sean tuyos. Lo que está sin ✍️ es registro factual
-> de lo que la IA propuso o construyó.
+> **Alexis:** las partes marcadas con ✍️ las escribes tú. La tarea dice que la especificación, los veredictos y el caso de prueba son tuyos, y eso es lo que te califican. Lo que no tiene ✍️ es el registro factual de lo que pediste y de lo que la IA propuso o hizo.
 
 ---
 
 ## Paso 1 — Especificación (Checkpoint A, S19)
 
-**Función elegida:** Etiquetas automáticas de precio por propiedad.
+**Función elegida:** etiquetas automáticas de precio por propiedad, según su precio por m² comparado con su zona.
 
-✍️ **Qué hace:**
-_(la acción exacta, en tus palabras)_
+✍️ **Qué hace:** _(la acción exacta, en tus palabras)_
 
-✍️ **Qué datos/inputs necesita:**
-_(de dónde sale cada dato: ¿campo que ya existe? ¿campo nuevo? ¿algo que escribe el usuario?)_
+✍️ **Qué datos/inputs necesita:** _(de dónde sale cada dato: `precio`, `m2`/`terreno`, `zona`, `tipo` de `data/propiedades.json`… ¿qué campo tuviste que agregar?)_
 
-✍️ **Cómo se sabrá que funciona:**
-_(criterio verificable + al menos un caso de prueba concreto con su resultado esperado)_
+✍️ **Cómo se sabrá que funciona:** _(criterio verificable + al menos un caso concreto con el resultado esperado)_
 
-✍️ **Auditado por:** _(nombre del compañero)_ · **Qué cuestionó y qué cambiaste:**
+✍️ **Auditado por:** _(compañero)_ · **Qué cuestionó y qué cambiaste:**
 
 ---
 
-## Paso 2 — Construcción: propuestas de la IA y tus decisiones
+## Paso 2 — Construcción: lo que pediste, lo que la IA propuso y tu decisión
 
-**Prompt que diste:** «para home finder, realiza los siguientes cambios… [instrucciones del Assignment 2]» + «HAZLO»
-(Herramienta: Claude)
+### Prompts que diste (registro)
+1. «para home finder, realiza los siguientes cambios y dame los entregables…» + las instrucciones del Assignment 2 (19-nov).
+2. «HAZLO» (19-nov) → primera versión de las etiquetas.
+3. «ponle fotos de casas reales» (25-nov).
+4. «mejora mi app 10,000 veces… actúa como 3 agentes… dame entregables A2 y A3…» (26-nov).
+5. «diseño y flujos tipo Zillow… mapa con clic», «landing de marca, colores futuristas, ultra high-end», «casas de ~120 millones», «casas en la Costa Azul de Francia», «nombre Home Finder Exclusive» (26-nov).
 
-Cada fila es una decisión de diseño que la IA tomó por su cuenta. Tu calificación depende de
-que la cuestiones frente a TU especificación: acepta, rechaza o pide revisión, y di por qué.
+### Propuestas de la IA para que decidas
+Cada fila es algo que la IA decidió o cambió por su cuenta, o que tocó tu especificación. Escribe tu veredicto y tu razón (1–2 líneas, citando el campo de la spec en juego).
 
-| # | Propuesta de la IA | Campo de tu spec en juego | ✍️ Veredicto | ✍️ Razón (1-2 líneas) |
+| # | Qué propuso o hizo la IA | Campo de tu spec en juego | ✍️ Veredicto | ✍️ Razón |
 |---|---|---|---|---|
-| 1 | **Fuente del "promedio de zona":** se agregó un campo nuevo `zona` (CDMX / Guadalajara / Querétaro) porque en el sitio original cada colonia tenía una sola propiedad y el promedio salía igual al precio propio. | Datos/inputs | | |
-| 2 | **Leave-one-out:** cada propiedad se compara contra el promedio de las *otras* de su grupo, sin incluirse a sí misma. | Qué hace | | |
-| 3 | **Terrenos aparte:** los terrenos usan `terreno` (m² de terreno) y solo se comparan contra terrenos; casas y deptos usan `m2` construidos y se comparan entre sí (casa y depto se mezclan). | Datos/inputs | | |
-| 4 | **Umbrales:** ≤ 85 % del promedio → "Buena oportunidad"; ≥ 115 % → "Precio alto"; en medio → "Precio en rango". | Cómo se sabrá que funciona | | |
-| 5 | **Sin comparables → sin etiqueta:** si no hay otra propiedad en el grupo, no se pone etiqueta y la ficha dice "Sin propiedades comparables en …". Hoy eso pasa con los 2 terrenos. | Qué hace | | |
-| 6 | **Explicación en la ficha:** al abrir una propiedad se muestra el cálculo (precio/m², promedio, n.º de comparables, % de diferencia). Función extra no pedida. | Qué hace (alcance) | | |
+| 1 | **Campo nuevo `zona`**: en el sitio original cada colonia tenía una sola propiedad, así que su "promedio de zona" era ella misma. | Datos/inputs | | |
+| 2 | **Leave-one-out**: cada propiedad se compara con el promedio de las *otras* de su grupo, no consigo misma. | Qué hace | | |
+| 3 | **Terrenos aparte** (por m² de terreno); casas y departamentos juntos (por m² construido). | Datos/inputs | | |
+| 4 | **Umbrales ±15 %** → "Buena oportunidad" / "Precio en rango" / "Precio alto". | Cómo se sabrá que funciona | | |
+| 5 | **Sin comparables → sin etiqueta** y con motivo, en vez de inventar una. | Qué hace | | |
+| 6 | **Error detectado por el auditor 2:** −14.6 % se mostraba como "−15 %" pero decía "Precio en rango". La IA propuso clasificar con el mismo % redondeado. | Cómo se sabrá que funciona | | |
+| 7 | **Algoritmo O(n)** en lugar de O(n²): mismo resultado (hay prueba de equivalencia), 9.1 s → 6.9 ms con 10,000 propiedades. | Qué hace (no debería cambiar) | | |
+| 8 | **Catálogo nuevo** (17 propiedades de la Costa Azul, precios en EUR, 2–4 por zona) a partir de tu pedido. Esto cambia los resultados de cualquier caso de prueba que hayas escrito con los datos viejos. | Datos/inputs | | |
+| 9 | **Funciones extra no pedidas en tu spec:** mostrar los comparables en la ficha, barra de posición vs. promedio, filtro "Precio vs. zona", orden "Mejor precio vs. su zona". | Qué hace (alcance) | | |
 
-⚠️ **Limitación que la IA señala:** hoy cada grupo tiene solo 1 comparable, así que en cada
-zona una propiedad sale "oportunidad" y la otra "alto" casi por construcción. Opciones: aceptarlo
-y documentarlo, agregar más propiedades, o usar un precio/m² de referencia externo (API / fuente pública).
+⚠️ **Limitación que señala la IA:** con 1 a 3 comparables por zona, una sola propiedad muy cara mueve el promedio. Ejemplo real: en Saint-Tropez, la villa de €22 M (+70 %) hace que las otras dos salgan "Buena oportunidad". Tus opciones: aceptarlo y documentarlo, pedir un mínimo de comparables o usar la mediana. Cualquiera de las dos últimas cambia tu especificación.
 
 ---
 
 ## Paso 3 — Validación (antes de S20)
 
-Cómo correrlo:
-- **En el deploy:** abre el link, ubica la propiedad y ábrela (clic) para ver el cálculo.
-- **En código:** `node test.js` en la carpeta del repo.
+Cómo correrlo, ya con el deploy arriba:
+- **En el deploy:** abre `https://TU-DEPLOY.vercel.app/#propiedad-13` y copia el texto de la sección "¿El precio es razonable?".
+- **En código:** `node tests/validacion.js 13` (o el id que elijas) y copia la salida completa.
+
+Caso límite sugerido (no obligatorio): la #13 (Gassin) queda justo en el umbral (−15.45 %).
 
 ✍️ **Input exacto que usaste:**
 
@@ -68,6 +70,6 @@ _(Opcional: más casos de prueba)_
 
 ## Uso de IA
 
-✍️ Herramienta(s): …
-✍️ Para qué la usé: …
-✍️ Qué decidí o verifiqué yo: …
+✍️ Herramienta(s):
+✍️ Para qué la usé:
+✍️ Qué decidí o verifiqué yo:
