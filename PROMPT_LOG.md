@@ -26,6 +26,8 @@
 3. «ponle fotos de casas reales» (25-nov).
 4. «mejora mi app 10,000 veces… actúa como 3 agentes… dame entregables A2 y A3…» (26-nov).
 5. «diseño y flujos tipo Zillow… mapa con clic», «landing de marca, colores futuristas, ultra high-end», «casas de ~120 millones», «casas en la Costa Azul de Francia», «nombre Home Finder Exclusive» (26-nov).
+6. «cambia color, ponle azul marino», «todo de un solo color, sencillo y elegante, las casas al inicio» (26-nov).
+7. «quita las etiquetas que se ven genéricas… cámbiale el nombre (una palabra)… que sea de renta: 4 % al mes del valor, 6 % en temporada alta, 3 % en baja, dividido por día, mínimo 5 días, cotización sencilla» (26-nov) → nombre **Azur**.
 
 ### Propuestas de la IA para que decidas
 Cada fila es algo que la IA decidió o cambió por su cuenta, o que tocó tu especificación. Escribe tu veredicto y tu razón (1–2 líneas, citando el campo de la spec en juego).
@@ -40,6 +42,8 @@ Cada fila es algo que la IA decidió o cambió por su cuenta, o que tocó tu esp
 | 6 | **Error detectado por el auditor 2:** −14.6 % se mostraba como "−15 %" pero decía "Precio en rango". La IA propuso clasificar con el mismo % redondeado. | Cómo se sabrá que funciona | | |
 | 7 | **Algoritmo O(n)** en lugar de O(n²): mismo resultado (hay prueba de equivalencia), 9.1 s → 6.9 ms con 10,000 propiedades. | Qué hace (no debería cambiar) | | |
 | 8 | **Catálogo nuevo** (17 propiedades de la Costa Azul, precios en EUR, 2–4 por zona) a partir de tu pedido. Esto cambia los resultados de cualquier caso de prueba que hayas escrito con los datos viejos. | Datos/inputs | | |
+| 10 | **La IA te advirtió:** pediste quitar las etiquetas; son tu función del A2. Si no se ven en el deploy, la rúbrica la toma como inexistente. Se conservaron como nota de texto ("Buena oportunidad · 30 % bajo su zona") y sección en la ficha. | Qué hace | | |
+| 11 | **Renta noche por noche:** cada noche usa la tasa de su temporada (alta jun–sep 6 %, media abr/may/oct 4 %, baja nov–mar 3 %); los meses de cada temporada los eligió la IA. Las etiquetas siguen calculándose con el **valor de venta**/m² (la tarifa es proporcional al valor, así que el resultado sería idéntico). | Datos/inputs | | |
 | 9 | **Funciones extra no pedidas en tu spec:** mostrar los comparables en la ficha, barra de posición vs. promedio, filtro "Precio vs. zona", orden "Mejor precio vs. su zona". | Qué hace (alcance) | | |
 
 ⚠️ **Limitación que señala la IA:** con 1 a 3 comparables por zona, una sola propiedad muy cara mueve el promedio. Ejemplo real: en Saint-Tropez, la villa de €22 M (+70 %) hace que las otras dos salgan "Buena oportunidad". Tus opciones: aceptarlo y documentarlo, pedir un mínimo de comparables o usar la mediana. Cualquiera de las dos últimas cambia tu especificación.
@@ -52,7 +56,7 @@ Cómo correrlo, ya con el deploy arriba:
 - **En el deploy:** abre `https://TU-DEPLOY.vercel.app/#propiedad-13` y copia el texto de la sección "¿El precio es razonable?".
 - **En código:** `node tests/validacion.js 13` (o el id que elijas) y copia la salida completa.
 
-Caso límite sugerido (no obligatorio): la #13 (Gassin) queda justo en el umbral (−15.45 %).
+Caso límite sugerido (no obligatorio): la #13 (Gassin) queda justo en el umbral (−15.45 %). Para el cotizador: `#propiedad-2`, llegada 2027-05-29, salida 2027-06-04 (cruza temporada media → alta).
 
 ✍️ **Input exacto que usaste:**
 

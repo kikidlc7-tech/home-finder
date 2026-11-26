@@ -1,5 +1,5 @@
 {
- "version": 3,
+ "version": 4,
  "moneda": "EUR",
  "tipoCambioRespaldo": {
   "EUR_MXN": 21.52,
@@ -7,7 +7,7 @@
   "fecha": "2026-11-26",
   "fuente": "Frankfurter (BCE); se usa solo si la API no responde"
  },
- "nota": "Catálogo ilustrativo para un proyecto académico. Propiedades, precios y datos de contacto no son reales; las fotos (Unsplash) son ilustrativas.",
+ "nota": "Catálogo ilustrativo para un proyecto académico. Propiedades, valores, tarifas y contactos no son reales; las fotos (Unsplash) son ilustrativas.",
  "propiedades": [
   {
    "id": 1,
@@ -1040,114 +1040,36 @@
      "alt": "Villa entre árboles"
     }
    ]
-  },
-  {
-   "id": 16,
-   "titulo": "Terreno con vista al mar en Èze",
-   "tipo": "Terreno",
-   "estado": "En venta",
-   "precio": 2800000,
-   "zona": "Riviera Este",
-   "comuna": "Èze",
-   "departamento": "Alpes-Maritimes",
-   "lat": 43.732,
-   "lng": 7.355,
-   "terreno": 2000,
-   "recamaras": 0,
-   "banos": 0,
-   "estacionamientos": 0,
-   "niveles": 0,
-   "anio": null,
-   "gastos": 0,
-   "vista": "Mar Mediterráneo",
-   "distanciaMar": 900,
-   "distanciaAeropuerto": 19,
-   "seguridad": "Camino privado",
-   "amenidades": [
-    "Permiso de construcción vigente",
-    "Servicios a pie de lote",
-    "Vista al mar"
-   ],
-   "destacados": [
-    "Permiso para 350 m² de construcción",
-    "Vista abierta al mar",
-    "Camino privado"
-   ],
-   "descripcion": "Terreno en ladera con vista abierta al Mediterráneo y permiso de construcción vigente para una villa de 350 m². Servicios a pie de lote y acceso por camino privado.",
-   "publicado": "2026-10-08",
-   "fotos": [
-    {
-     "id": "1718995742144-210fece0874b",
-     "autor": "Karin Kim",
-     "alt": "Terreno con vista desde la loma"
-    },
-    {
-     "id": "1772544152057-c95a2c75a1e4",
-     "autor": "Shalev Cohen",
-     "alt": "Ladera con casas entre árboles"
-    },
-    {
-     "id": "1674164967149-d1c9db1bd9cc",
-     "autor": "Chelsea Essig",
-     "alt": "Vista a la bahía entre pinos"
-    }
-   ],
-   "mediosBanos": 0,
-   "m2": 0
-  },
-  {
-   "id": 17,
-   "titulo": "Terreno edificable en Roquebrune-Cap-Martin",
-   "tipo": "Terreno",
-   "estado": "Precio reducido",
-   "precio": 1900000,
-   "zona": "Riviera Este",
-   "comuna": "Roquebrune-Cap-Martin",
-   "departamento": "Alpes-Maritimes",
-   "lat": 43.762,
-   "lng": 7.46,
-   "terreno": 1600,
-   "recamaras": 0,
-   "banos": 0,
-   "estacionamientos": 0,
-   "niveles": 0,
-   "anio": null,
-   "gastos": 0,
-   "vista": "Bahía y montaña",
-   "distanciaMar": 1200,
-   "distanciaAeropuerto": 27,
-   "seguridad": "Calle residencial",
-   "amenidades": [
-    "Uso residencial",
-    "Servicios a pie de lote",
-    "Orientación sur"
-   ],
-   "destacados": [
-    "Orientación sur",
-    "Precio reducido 8% en septiembre",
-    "A 5 min de Mónaco"
-   ],
-   "descripcion": "Terreno edificable con orientación sur en una calle residencial tranquila, con vista a la bahía y a la montaña. Tiene servicios a pie de lote y está a cinco minutos de Mónaco.",
-   "publicado": "2026-09-20",
-   "fotos": [
-    {
-     "id": "1603085429201-64dadaec4061",
-     "autor": "Éric Deschaintre",
-     "alt": "Terreno frente al mar"
-    },
-    {
-     "id": "1730126680640-bb6c3549d775",
-     "autor": "Chris Weiher",
-     "alt": "Vista al mar entre árboles"
-    },
-    {
-     "id": "1772544152341-27580cb5373f",
-     "autor": "Shalev Cohen",
-     "alt": "Terreno arbolado en ladera"
-    }
-   ],
-   "mediosBanos": 0,
-   "m2": 0
   }
- ]
+ ],
+ "renta": {
+  "descripcion": "Tarifa por noche = valor de la propiedad × tasa mensual de la temporada ÷ 30 (regla definida por el alumno).",
+  "tasasMensuales": {
+   "alta": 0.06,
+   "media": 0.04,
+   "baja": 0.03
+  },
+  "temporadas": {
+   "alta": [
+    6,
+    7,
+    8,
+    9
+   ],
+   "media": [
+    4,
+    5,
+    10
+   ],
+   "baja": [
+    11,
+    12,
+    1,
+    2,
+    3
+   ]
+  },
+  "diasPorMes": 30,
+  "minNoches": 5
+ }
 }

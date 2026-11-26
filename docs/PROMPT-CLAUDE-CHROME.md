@@ -8,15 +8,13 @@ Eres mi asistente de despliegue. Trabaja de corrido y no me preguntes por pasos 
 1. Abre github.com/kikidlc7-tech/home-finder y confirma que ya tiene index.html, vercel.json y la carpeta data/. Si está vacío, para y avísame.
 2. En vercel.com → Add New… → Project, importa "home-finder" con: Framework Preset "Other", Root Directory "./", sin Build Command, sin Output Directory. Deploy.
 3. Abre la URL de producción (.vercel.app) y verifica, anotando ✅ o ❌ y qué viste:
-   a) La landing carga con foto de fondo y el título "La Costa Azul, con el precio en contexto."
-   b) En "Propiedades", las tarjetas tienen fotos, precio y una etiqueta (Buena oportunidad / En rango / Precio alto).
-   c) El mapa de la derecha carga con pines de precio y al hacer clic en un pin aparece la tarjetita con "Ver ficha".
-   d) Filtro Zona → "Cannes" deja 3 propiedades; "Precio vs. zona" → "Buena oportunidad" deja 1.
-   e) Abre /#propiedad-13: aparece "¿El precio es razonable?" con "Buena oportunidad (-15 %)" y 2 comparables.
-   f) Cambia la moneda a EUR y luego a USD: los precios cambian. Lee el pie de página y dime qué tipo de cambio y qué fecha muestra.
-   g) Reduce la ventana a ancho de celular: aparece el botón "Mapa" abajo y el menú ☰ funciona.
-   h) Abre las herramientas de desarrollador → Consola: ¿hay errores en rojo? Copia el texto exacto si los hay.
-   i) Pestaña Network, recarga sin caché: anota cuántas peticiones y cuántos KB transferidos muestra abajo (es un dato para mi diagnóstico de escalabilidad).
+   a) Arriba aparece la marca AZUR y una foto grande de la villa destacada.
+   b) Las villas se ven con fotos grandes, "Desde $… por noche" y una nota como "Buena oportunidad · 30 % bajo su zona".
+   c) Botón "Mapa": se ve un mapa real con 5 zonas; al tocar una se acercan sus villas y, al pasar el mouse por un pin, aparece la tarjeta de la casa.
+   d) Abre /#propiedad-2, elige llegada 29-may-2027 y salida 04-jun-2027: debe cotizar 6 noches (3 en temporada media y 3 en alta). Con 4 noches debe decir que el mínimo es 5.
+   e) Cambia la moneda a EUR y USD: cambian las tarifas.
+   f) En ancho de celular se ve ordenado.
+   g) Consola (herramientas de desarrollador): ¿errores en rojo? Copia el texto exacto.
 4. En Vercel → Settings → Deployment Protection, confirma que la URL de producción sea pública, sin login.
 5. Entrégame: URL de producción, URL del repo, URL de PROMPT_LOG.md en GitHub y la lista del paso 3.
 ```

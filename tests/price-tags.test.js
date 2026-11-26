@@ -48,7 +48,7 @@ test("sin superficie o sin precio no truena: sin etiqueta y con motivo", () => {
   assert.equal(r[3].numComparables, 0);
 });
 
-test("el catálogo real: todas las propiedades tienen etiqueta", () => {
+test("el catálogo real: todas las propiedades tienen etiqueta (zona con 2+ villas)", () => {
   const r = T.calcularEtiquetasPrecio(data);
   assert.equal(data.filter((p) => !r[p.id].etiqueta).length, 0);
 });

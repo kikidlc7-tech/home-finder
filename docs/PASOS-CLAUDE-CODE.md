@@ -1,4 +1,4 @@
-# Trabajar Home Finder Exclusive con Claude Code
+# Trabajar Azur con Claude Code
 
 ## 1. Entrar a Claude Code (después de instalarlo)
 1. Abre **Terminal** (Cmd + Espacio → "Terminal").

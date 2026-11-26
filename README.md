@@ -1,22 +1,22 @@
-# Home Finder Exclusive
+# Azur
 
-Residencias de lujo en la Costa Azul (Saint-Tropez → Mónaco) con **el precio en contexto**: cada propiedad muestra si su precio por m² está por debajo, en rango o por encima del promedio de las demás de su zona.
+Villas de lujo en renta en la Costa Azul (Saint-Tropez → Mónaco). Antes se llamó **Home Finder** (Assignments 1 y 2). Cada villa muestra su valor por m² frente a su zona (función del A2) y permite cotizar una estancia por fechas.
 
 Proyecto del curso *Applied Algorithmic Thinking* (Assignments 1 → 2 → 3). Catálogo, precios y contactos son ilustrativos; las fotos son de Unsplash y no corresponden a los inmuebles.
 
-- **Deploy:** _(pega aquí el link de Vercel)_
+- **Deploy:** https://home-finder-silk.vercel.app
 - **Bitácora del Assignment 2:** [`PROMPT_LOG.md`](PROMPT_LOG.md)
 
 ## Qué puede hacer un usuario (funciones reales)
 
 | Función | Dónde probarla | Qué la hace "real" |
 |---|---|---|
-| **Etiqueta de precio vs. zona** (A2) | Tarjetas, pines del mapa y sección "¿El precio es razonable?" de cada ficha | Calcula con los datos el precio/m² contra el promedio de las otras propiedades de su zona y tipo ([`js/price-tags.js`](js/price-tags.js)) |
-| **Búsqueda con filtros y mapa** | `#buscar` | Filtra por zona, precio, recámaras, baños, tipo, etiqueta y amenidades; ordena; "Buscar mientras muevo el mapa" filtra por el área visible |
-| **Precios en MXN / EUR / USD** | Selector de moneda del encabezado | Tipo de cambio en vivo de la API de Frankfurter (BCE), con caché de 12 h y respaldo |
-| **Costo mensual estimado** | Ficha de casas y departamentos | Amortización con enganche, plazo y tasa ajustables + gastos de comunidad ([`js/finance.js`](js/finance.js)) |
-| **Guardadas** | Corazón en tarjetas/ficha, `#guardadas` | Persisten en el navegador (localStorage) |
-| **Contacto** | Ficha y formulario | Valida y abre WhatsApp con el mensaje armado (número de demo en `js/app.js` → `CONFIG`) |
+| **Valor frente a su zona** (A2) | Nota bajo cada villa y sección "Valor frente a su zona" en la ficha | Calcula el valor/m² contra el promedio de las otras villas de su zona ([`js/price-tags.js`](js/price-tags.js)) |
+| **Cotizador de renta** | Ficha → elegir llegada y salida | Tarifa por noche = valor × tasa mensual de la temporada (alta 6 %, media 4 %, baja 3 %) ÷ 30; cobra noche por noche y exige mínimo 5 noches ([`js/finance.js`](js/finance.js)) |
+| **Mapa** | Botón "Mapa" | OpenStreetMap: vista por zonas; al acercarse, pines con tarifa que no se enciman y vista previa al pasar el mouse |
+| **MXN / EUR / USD** | Selector del encabezado | Tipo de cambio en vivo (Frankfurter, BCE) con caché y respaldo |
+| **Guardadas** | Corazón, `#guardadas` | Persisten en el navegador |
+| **Solicitar reserva** | Ficha | Abre WhatsApp con fechas, noches y total cotizado (número de demo en `js/app.js`) |
 
 ## Cómo correrlo
 
@@ -25,7 +25,7 @@ Es un sitio estático, sin build ni dependencias:
 ```bash
 python3 -m http.server 8000     # o cualquier servidor estático
 # abre http://localhost:8000
-node --test tests/*.test.js      # 12 pruebas de la lógica
+node --test tests/*.test.js      # 17 pruebas de la lógica (etiquetas y cotizador)
 node tests/validacion.js 13      # etiqueta de una propiedad, para el registro de validación
 node tests/benchmark.js          # O(n²) del A2 vs. O(n) actual
 node tests/verificar-fotos.mjs   # revisa que las fotos de Unsplash respondan (requiere internet)
@@ -36,12 +36,12 @@ Deploy en Vercel: Framework **Other**, sin Build Command ni Output Directory. Lo
 ## Estructura
 
 ```
-index.html            vistas: #inicio (landing), #buscar, #guardadas, #propiedad-N (ficha)
-css/styles.css        diseño (Instrument Serif + Geist; tinta mediterránea + azul marino)
+index.html            vistas: #inicio (portada + villas + mapa), #guardadas, #propiedad-N (ficha)
+css/styles.css        diseño (Cormorant Garamond + Jost; un solo color: azul marino)
 js/price-tags.js      función del A2 (O(n)), sin dependencias, probada en node
-js/finance.js         hipoteca y conversión de moneda
+js/finance.js         tarifas de renta, cotización y conversión de moneda
 js/app.js             interfaz, rutas, filtros, mapa, ficha, formulario
-data/propiedades.json catálogo (precios en EUR)
+data/propiedades.json catálogo (valores en EUR) y reglas de renta
 vendor/leaflet/       Leaflet 1.9.4 servido localmente (BSD-2)
 tests/                pruebas, validación y benchmark
 docs/                 revisión de 3 agentes, datos para el diagnóstico S22, guías
@@ -88,6 +88,11 @@ docs/                 revisión de 3 agentes, datos para el diagnóstico S22, gu
 
 ### 6. Cambiar el catálogo a la Costa Azul en euros — *tu decisión de producto*
 - **Qué propuso el IS:** al pedir casas de ~120 M MXN en la Costa Azul, el IS guardó precios en EUR (moneda de origen) y convierte a MXN/USD con tipo de cambio en vivo; propuso 2–4 propiedades por zona para que ninguna quede sin comparables. Limitación que señaló: con 2 o 3 comparables, una propiedad muy cara arrastra el promedio.
+- **Qué decidí:**
+- **Por qué:**
+
+### 7. Pasar de venta a renta y quitar las insignias de color — *tu decisión de producto*
+- **Qué propuso el IS:** al pedir renta con tasas de 3/4/6 % mensual del valor, el IS cobra **noche por noche** según la temporada de cada fecha (una estancia de mayo a junio mezcla tarifas) y valida el mínimo de 5 noches; quitó los terrenos (no se rentan). Al pedir quitar las "etiquetas que se ven genéricas", el IS **advirtió** que la etiqueta es la función del A2 y que, si desaparece del deploy, la rúbrica la cuenta como inexistente (Nivel 0); propuso conservarla como texto discreto.
 - **Qué decidí:**
 - **Por qué:**
 

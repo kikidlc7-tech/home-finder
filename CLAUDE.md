@@ -1,4 +1,4 @@
-# Home Finder Exclusive — contexto para Claude Code
+# Azur (antes Home Finder) — contexto para Claude Code
 
 Sitio estático (HTML/CSS/JS sin framework ni build) desplegado en Vercel. Ver `README.md` para estructura y funciones.
 
