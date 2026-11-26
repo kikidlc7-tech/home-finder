@@ -37,8 +37,15 @@
     favs: store.get("hf:guardadas", []),
     zona: "", sort: "destacadas", modo: "lista", soloGuardadas: false,
     map: null, markers: [], mapState: "idle", miniMap: null, fichaId: null, galeria: null,
-    renta: Finance.RENTA_DEFAULT
+    renta: Finance.RENTA_DEFAULT,
+    op: store.get("hf:op", "comprar")
   };
+  function esRenta() { return S.op === "rentar"; }
+  // precio principal según la operación: venta (precio total) o renta (desde, por noche)
+  function precioTexto(p, corto) {
+    if (!esRenta()) return corto ? moneyCorto(p.precio) : money(p.precio, true);
+    return (corto ? moneyCorto(noche(p, "baja")) : "Desde " + money(noche(p, "baja"), true) + " <small>por noche</small>");
+  }
   function noche(p, temporada) { return Finance.tarifaNoche(p.precio, temporada, S.renta); }
 
   function money(eur, compact) {
@@ -124,7 +131,7 @@
   /* =========================================================
      INICIO: portada + colección
      ========================================================= */
-  function destacada() { return S.props.slice().sort(function (a, b) { return b.precio - a.precio; })[0]; }
+  function destacada() { return S.props.filter(function (p) { return p.destacada; })[0] || S.props.slice().sort(function (a, b) { return b.precio - a.precio; })[0]; }
 
   function pintarPortada() {
     var p = destacada(), f = p.fotos[0];
@@ -133,7 +140,7 @@
       '<div class="cover-inner wrap"><div>' +
         '<p class="cover-kicker">' + esc(p.comuna) + "</p>" +
         "<h1>" + esc(p.titulo) + "</h1>" +
-        '<p class="cover-meta">Desde ' + money(noche(p, "baja"), true) + " por noche · " + esc(specsTexto(p)) + "</p>" +
+        '<p class="cover-meta">' + (esRenta() ? "Desde " + money(noche(p, "baja"), true) + " por noche" : money(p.precio, true)) + " · " + esc(specsTexto(p)) + "</p>" +
       '</div><a class="btn btn-light" href="#propiedad-' + p.id + '">Ver la villa</a></div>';
   }
 
@@ -143,13 +150,15 @@
     "precio-asc": function (a, b) { return a.precio - b.precio; },
     recientes: function (a, b) { return b.publicado.localeCompare(a.publicado); }
   };
-  function visibles() {
+  function visibles(enArea) {
     return S.props.filter(function (p) {
       if (S.zona && p.zona !== S.zona) return false;
       if (S.soloGuardadas && !isFav(p.id)) return false;
+      if (enArea && S.area && !S.area.contains([p.lat, p.lng])) return false;
       return true;
     }).sort(ORDEN[S.sort] || ORDEN.destacadas);
   }
+  function enMapa() { return S.modo === "mapa"; }
 
   function pintarZonas() {
     var btn = function (v, t) { return '<button type="button" data-zona="' + esc(v) + '" aria-pressed="' + (S.zona === v) + '">' + esc(t) + "</button>"; };
@@ -172,23 +181,24 @@
         '<button class="fav" type="button" data-fav="' + p.id + '" aria-pressed="' + isFav(p.id) + '" aria-label="Guardar ' + esc(p.titulo) + '">' + ICON_HEART + "</button>" +
       "</div>" +
       '<div class="card-body">' +
-        '<p class="card-price">Desde ' + money(noche(p, "baja"), true) + " <small>por noche</small></p>" +
+        '<p class="card-price">' + precioTexto(p) + "</p>" +
         '<h3 class="card-title"><a href="#propiedad-' + p.id + '">' + esc(p.titulo) + "</a></h3>" +
         '<p class="card-meta">' + esc(p.comuna) + " · " + esc(specsTexto(p)) + "</p>" + tagHTML(p) +
       "</div></article>";
   }
 
   function pintarLista() {
-    var lista = visibles();
-    $("#resultCount").textContent = lista.length === 1 ? "1 villa" : lista.length + " villas";
+    var lista = visibles(enMapa());
+    var total = visibles().length;
+    $("#resultCount").textContent = (lista.length === 1 ? "1 villa" : lista.length + " villas") + (enMapa() && lista.length < total ? " en esta área del mapa" : "");
     if (!lista.length) {
       $("#grid").innerHTML = '<div class="empty"><h2>' + (S.soloGuardadas ? "Aún no guardas ninguna" : "Sin villas en esta zona") + "</h2><p>" +
         (S.soloGuardadas ? "Toca el corazón de una casa para tenerla a la mano." : "Prueba con otra zona.") +
         '</p><a class="btn btn-line" href="#inicio" data-todas>Ver todas las villas</a></div>';
     } else {
-      $("#grid").innerHTML = lista.map(function (p, i) { return cardHTML(p, i === 0 && lista.length > 2); }).join("");
+      $("#grid").innerHTML = lista.map(function (p, i) { return cardHTML(p, !enMapa() && i === 0 && lista.length > 2); }).join("");
     }
-    if (S.modo === "mapa") pintarMarcadores();
+    if (enMapa() && !S._desdeMapa) pintarMarcadores(true);
   }
 
   function moverCarrusel(media, step) {
@@ -227,12 +237,12 @@
     capa.addTo(map);
   }
   function pinIcon(L, p) {
-    return L.divIcon({ className: "pin", html: '<span class="pin-label">' + moneyCorto(noche(p, "baja")) + "</span>", iconSize: [0, 0], iconAnchor: [0, 0] });
+    return L.divIcon({ className: "pin", html: '<span class="pin-label">' + precioTexto(p, true) + "</span>", iconSize: [0, 0], iconAnchor: [0, 0] });
   }
   function popupHTML(p) {
     var f = p.fotos[0];
     return '<div class="pop-card"><img src="' + img(f.id, 560) + '" alt=""><div>' +
-      "<strong>Desde " + money(noche(p, "baja"), true) + " / noche</strong>" +
+      "<strong>" + (esRenta() ? "Desde " + money(noche(p, "baja"), true) + " / noche" : money(p.precio, true)) + "</strong>" +
       "<small>" + esc(p.titulo) + "</small><small>" + esc(specsTexto(p)) + "</small>" +
       '<button type="button" data-open="' + p.id + '">Ver la villa</button></div></div>';
   }
@@ -264,14 +274,26 @@
     if (S.mapState !== "idle") { if (S.map) { S.map.invalidateSize(); pintarMarcadores(); } return; }
     S.mapState = "loading";
     cargarLeaflet().then(function (L) {
-      S.map = L.map("map", { scrollWheelZoom: false, zoomControl: true, zoomSnap: 0.5 });
+      S.map = L.map("map", { scrollWheelZoom: true, zoomControl: true, zoomSnap: 0.5 });
+      var Reset = L.Control.extend({ options: { position: "topright" }, onAdd: function () {
+        var b = L.DomUtil.create("button", "map-reset"); b.type = "button"; b.textContent = "Ver toda la costa";
+        L.DomEvent.disableClickPropagation(b);
+        L.DomEvent.on(b, "click", function () { S.zona = ""; pintarZonas(); S.area = null; pintarMarcadores(); pintarLista(); });
+        return b;
+      } });
+      S.map.addControl(new Reset());
       capaMapa(L, S.map, mapaRespaldo);
       S.map.on("zoomend", function () {
         if (S._pintando) return;
         var debeZonas = S.map.getZoom() < ZOOM_DETALLE && !S.zona;
         if (debeZonas !== S.vistaZonas) pintarMarcadores(true); else separarPines();
       });
-      S.map.on("moveend", separarPines);
+      S.map.on("moveend", function () {
+        separarPines();
+        if (S._pintando) return;
+        S.area = S.map.getBounds();
+        S._desdeMapa = true; pintarLista(); S._desdeMapa = false;
+      });
       S.mapState = "ready";
       pintarMarcadores();
     }).catch(mapaRespaldo);
@@ -282,6 +304,7 @@
     if (S.mapState !== "ready") return;
     var L = window.L, lista = visibles();
     S.markers.forEach(function (m) { S.map.removeLayer(m); });
+    if (!sinEncuadre) S.area = null;
     if (!sinEncuadre) {
       var pts0 = (lista.length ? lista : S.props).map(function (p) { return [p.lat, p.lng]; });
       S._pintando = true;
@@ -294,7 +317,7 @@
       S.markers = uniq(lista.map(function (p) { return p.zona; })).map(function (z) {
         var ps = lista.filter(function (p) { return p.zona === z; });
         var lat = ps.reduce(function (a, p) { return a + p.lat; }, 0) / ps.length, lng = ps.reduce(function (a, p) { return a + p.lng; }, 0) / ps.length;
-        var desde = Math.min.apply(null, ps.map(function (p) { return noche(p, "baja"); }));
+        var desde = Math.min.apply(null, ps.map(function (p) { return esRenta() ? noche(p, "baja") : p.precio; }));
         var m = L.marker([lat, lng], { icon: L.divIcon({ className: "pin pin-zona", html: '<span class="pin-label"><b>' + esc(z) + "</b> " + ps.length + " villas · desde " + moneyCorto(desde) + "</span>", iconSize: [0, 0], iconAnchor: [0, 0] }), title: z, keyboard: true });
         m.on("click", function () { S.map.fitBounds(L.latLngBounds(ps.map(function (p) { return [p.lat, p.lng]; })), { padding: [80, 80], maxZoom: 15 }); });
         return m.addTo(S.map);
@@ -302,12 +325,13 @@
       setTimeout(separarPines, 30);
       return;
     }
+    S.markerById = {};
     S.markers = lista.map(function (p) {
-      var m = L.marker([p.lat, p.lng], { icon: pinIcon(L, p), title: p.titulo, riseOnHover: true, keyboard: true });
+      var m = S.markerById[p.id] = L.marker([p.lat, p.lng], { icon: pinIcon(L, p), title: p.titulo, riseOnHover: true, keyboard: true });
       m.bindPopup(popupHTML(p), { closeButton: false, offset: [0, -34], autoPan: false, className: "pop-hover" });
       var cerrarT;
       m.on("mouseover", function () {
-        clearTimeout(cerrarT); m.openPopup();
+        clearTimeout(cerrarT); m.openPopup(); marcarTarjeta(p.id, true);
         var pop = m.getPopup().getElement();
         if (pop && !pop._hf) {
           pop._hf = true;
@@ -315,7 +339,7 @@
           pop.addEventListener("mouseleave", function () { cerrarT = setTimeout(function () { m.closePopup(); }, 250); });
         }
       });
-      m.on("mouseout", function () { cerrarT = setTimeout(function () { m.closePopup(); }, 350); });
+      m.on("mouseout", function () { marcarTarjeta(p.id, false); cerrarT = setTimeout(function () { m.closePopup(); }, 350); });
       m.on("click", function () { m.openPopup(); });
       return m.addTo(S.map);
     });
@@ -328,17 +352,26 @@
     var X = function (lng) { return ((lng - 6.5) / 1.05) * 1000; }, Y = function (lat) { return (1 - (lat - 43.15) / 0.67) * 700; };
     $("#map").innerHTML = '<div class="map-fallback"><svg viewBox="0 0 1000 700" role="img" aria-label="Mapa esquemático de la Costa Azul">' +
       '<rect width="1000" height="700" fill="#E9EDF3"/><path d="M0 0H1000V330C930 300 880 250 820 270 760 290 720 230 640 250 580 265 520 300 470 330 420 360 380 420 330 430 280 440 230 470 170 520 110 560 60 600 0 620Z" fill="#fff"/>' +
-      lista.map(function (p) { return '<a href="#propiedad-' + p.id + '"><circle cx="' + X(p.lng).toFixed(0) + '" cy="' + Y(p.lat).toFixed(0) + '" r="10" fill="#0F1E3D" stroke="#fff" stroke-width="3"><title>' + esc(p.titulo + " — desde " + money(noche(p, "baja"), true) + " por noche") + "</title></circle></a>"; }).join("") +
+      lista.map(function (p) { return '<a href="#propiedad-' + p.id + '"><circle cx="' + X(p.lng).toFixed(0) + '" cy="' + Y(p.lat).toFixed(0) + '" r="10" fill="#0F1E3D" stroke="#fff" stroke-width="3"><title>' + esc(p.titulo + " — " + (esRenta() ? "desde " + money(noche(p, "baja"), true) + " por noche" : money(p.precio, true))) + "</title></circle></a>"; }).join("") +
       '<text x="24" y="680" fill="#5B667A" font-size="18" font-family="sans-serif">Mapa esquemático: el mapa detallado no está disponible ahora.</text></svg></div>';
   }
 
+  // Modo mapa: lista a la izquierda y mapa fijo a la derecha (en móvil, solo el mapa).
   function cambiarModo(m) {
     S.modo = m;
+    S.area = null;
     $$(".view-switch button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.mode === m)); });
-    $("#grid").hidden = m !== "lista";
+    $("#results").classList.toggle("is-split", m === "mapa");
     $("#mapWrap").hidden = m !== "mapa";
-    if (m === "mapa") iniciarMapa();
+    pintarLista();
+    $("#mapFab span").textContent = m === "mapa" ? "Ver fotos" : "Ver mapa";
+    if (m === "mapa") { iniciarMapa(); $("#results").scrollIntoView({ behavior: "smooth", block: "start" }); }
   }
+  function marcarPin(id, on) {
+    var m = S.markerById && S.markerById[id];
+    if (m && m.getElement()) { m.getElement().classList.toggle("is-hot", on); m.setZIndexOffset(on ? 1000 : 0); }
+  }
+  function marcarTarjeta(id, on) { var c = $('.card[data-id="' + id + '"]'); if (c) c.classList.toggle("is-hot", on); }
 
   /* =========================================================
      FICHA
@@ -397,7 +430,9 @@
           '<section class="s-section"><h3>Ubicación</h3><div class="mini-map" id="miniMap"></div><p class="credit loc-note">Ubicación aproximada. <a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.lat + "," + p.lng) + '" target="_blank" rel="noopener">Abrir en Google Maps</a></p></section>' +
           '<p class="credit">Fotos ilustrativas de Unsplash: ' + esc(uniq(p.fotos.map(function (f) { return f.autor; })).join(", ")) + ".</p>" +
         "</div>" +
-        '<aside class="aside">' + quoteHTML(p) + "</aside>" +
+        '<aside class="aside">' +
+          '<div class="view-switch op-switch aside-tabs" role="group" aria-label="Operación"><button type="button" data-op="comprar" aria-pressed="' + !esRenta() + '">Comprar</button><button type="button" data-op="rentar" aria-pressed="' + esRenta() + '">Rentar</button></div>' +
+          (esRenta() ? quoteHTML(p) : ventaHTML(p, e)) + "</aside>" +
       "</div></div>";
 
     $("#sheet").hidden = false;
@@ -428,6 +463,24 @@
       '<a class="btn btn-solid btn-block" id="qBook" aria-disabled="true" target="_blank" rel="noopener" href="#">Solicitar reserva</a>' +
       '<button class="btn btn-line btn-block" type="button" data-fav="' + p.id + '" aria-pressed="' + isFav(p.id) + '">Guardar</button>' +
       '<p class="credit">Tarifa = valor de la villa × tasa mensual de la temporada (alta 6 %, media 4 %, baja 3 %) ÷ 30. Ref. AZ-' + p.id + "</p></div>";
+  }
+  function ventaHTML(p, e) {
+    return '<div class="quote">' +
+      '<p class="aside-price">' + money(p.precio) + "</p>" +
+      '<p class="fine">' + (S.currency !== "EUR" ? "€" + nf.format(p.precio) + " · " : "") + (e.precioM2 ? moneyM2(e.precioM2) : "") + "</p>" +
+      tagHTML(p) +
+      '<a class="btn btn-solid btn-block" target="_blank" rel="noopener" href="' + waLink("Hola, me interesa comprar \"" + p.titulo + "\" (" + money(p.precio) + ", ref. AZ-" + p.id + "). ¿Podemos agendar una visita?") + '">Agendar visita</a>' +
+      '<button class="btn btn-line btn-block" type="button" data-fav="' + p.id + '" aria-pressed="' + isFav(p.id) + '">Guardar</button>' +
+      '<p class="credit">' + esc(p.estado) + " · Ref. AZ-" + p.id + "</p></div>";
+  }
+  function cambiarOp(op) {
+    S.op = op; store.set("hf:op", op);
+    $$("[data-op]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.op === op)); });
+    $("#pageTitle").textContent = S.soloGuardadas ? "Guardadas" : (esRenta() ? "Villas en renta" : "Villas en venta");
+    $("#pageSub").textContent = esRenta() ? "Quince casas frente al Mediterráneo, de Saint-Tropez a Mónaco. Estancias desde cinco noches; la tarifa cambia con la temporada." : "Quince casas frente al Mediterráneo, de Saint-Tropez a Mónaco. Cada una muestra cómo está su valor por m² frente a su zona.";
+    pintarPortada(); pintarLista();
+    if (enMapa()) pintarMarcadores(true);
+    if (S.fichaId) { var id = S.fichaId; S.fichaId = null; abrirFicha(id); }
   }
   function actualizarCotizacion() {
     var p = S.galeria, a = $("#qIn"), b = $("#qOut");
@@ -487,7 +540,7 @@
     var antes = S.soloGuardadas;
     S.soloGuardadas = h === "guardadas";
     $("#cover").hidden = S.soloGuardadas;
-    $("#pageTitle").textContent = S.soloGuardadas ? "Guardadas" : "Villas";
+    $("#pageTitle").textContent = S.soloGuardadas ? "Guardadas" : (esRenta() ? "Villas en renta" : "Villas en venta");
     if (antes !== S.soloGuardadas) pintarLista();
     if (S.soloGuardadas) window.scrollTo(0, 0);
   }
@@ -516,14 +569,18 @@
       var t = ev.target, el;
       if ((el = t.closest("[data-fav]"))) { ev.preventDefault(); ev.stopPropagation(); toggleFav(Number(el.dataset.fav)); return; }
       if ((el = t.closest(".card-nav"))) { ev.preventDefault(); moverCarrusel(el.closest(".card-media"), Number(el.dataset.step)); return; }
-      if ((el = t.closest("[data-zona]"))) { S.zona = el.dataset.zona; pintarZonas(); pintarLista(); return; }
+      if ((el = t.closest("[data-zona]"))) { S.zona = el.dataset.zona; S.area = null; pintarZonas(); pintarLista(); if (enMapa()) pintarMarcadores(); return; }
       if ((el = t.closest("[data-mode]"))) { cambiarModo(el.dataset.mode); return; }
+      if ((el = t.closest("[data-op]"))) { cambiarOp(el.dataset.op); return; }
       if ((el = t.closest("[data-open]"))) { location.hash = "#propiedad-" + el.dataset.open; return; }
       if ((el = t.closest("[data-photo]"))) { abrirGaleria(Number(el.dataset.photo)); return; }
       if (t.closest("[data-todas]")) { S.zona = ""; pintarZonas(); return; }
       if (t.closest("#sheetClose")) { cerrarConHistoria(); return; }
       if (t.closest("#shareBtn")) { compartir(); return; }
     });
+    $("#grid").addEventListener("mouseover", function (ev) { var c = ev.target.closest(".card"); if (c && enMapa()) marcarPin(Number(c.dataset.id), true); });
+    $("#grid").addEventListener("mouseout", function (ev) { var c = ev.target.closest(".card"); if (c && enMapa()) marcarPin(Number(c.dataset.id), false); });
+    window.addEventListener("resize", function () { if (S.map && enMapa()) S.map.invalidateSize(); });
     document.addEventListener("input", function (ev) { if (ev.target.closest && ev.target.closest("#quote")) actualizarCotizacion(); });
     document.addEventListener("change", function (ev) { if (ev.target.closest && ev.target.closest("#quote")) actualizarCotizacion(); });
     document.addEventListener("keydown", function (ev) {
@@ -539,6 +596,7 @@
         else if (ev.key === "Tab") atraparFoco($("#sheet"), ev);
       }
     });
+    $("#mapFab").addEventListener("click", function () { cambiarModo(enMapa() ? "lista" : "mapa"); });
     $("#lbClose").addEventListener("click", cerrarGaleria);
     $("#lbPrev").addEventListener("click", function () { pasoLb(-1); });
     $("#lbNext").addEventListener("click", function () { pasoLb(1); });
@@ -564,7 +622,7 @@
     $("#savedCount").textContent = S.favs.length;
     if (data.renta) S.renta = data.renta;
     $("#closingWa").href = waLink("Hola, quiero rentar una villa con Azur. Mis fechas son: ");
-    pintarFx(); pintarPortada(); pintarZonas(); pintarLista(); eventos();
+    pintarFx(); pintarZonas(); eventos(); cambiarOp(S.op);
     ruta();
     cargarTipoCambio().then(function () { pintarPortada(); pintarLista(); });
   }

@@ -28,6 +28,7 @@
 5. «diseño y flujos tipo Zillow… mapa con clic», «landing de marca, colores futuristas, ultra high-end», «casas de ~120 millones», «casas en la Costa Azul de Francia», «nombre Home Finder Exclusive» (26-nov).
 6. «cambia color, ponle azul marino», «todo de un solo color, sencillo y elegante, las casas al inicio» (26-nov).
 7. «quita las etiquetas que se ven genéricas… cámbiale el nombre (una palabra)… que sea de renta: 4 % al mes del valor, 6 % en temporada alta, 3 % en baja, dividido por día, mínimo 5 días, cotización sencilla» (26-nov) → nombre **Azur**.
+8. «mejora el mapa como el anterior… mete más fotos… en el inicio la casa más chingona… fusiónalo con el de la pasada, quiero vender casas» (26-nov) → Comprar/Rentar, lista + mapa, 7–8 fotos por villa.
 
 ### Propuestas de la IA para que decidas
 Cada fila es algo que la IA decidió o cambió por su cuenta, o que tocó tu especificación. Escribe tu veredicto y tu razón (1–2 líneas, citando el campo de la spec en juego).

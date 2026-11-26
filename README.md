@@ -1,6 +1,6 @@
 # Azur
 
-Villas de lujo en renta en la Costa Azul (Saint-Tropez → Mónaco). Antes se llamó **Home Finder** (Assignments 1 y 2). Cada villa muestra su valor por m² frente a su zona (función del A2) y permite cotizar una estancia por fechas.
+Villas de lujo en venta y en renta en la Costa Azul (Saint-Tropez → Mónaco). Antes se llamó **Home Finder** (Assignments 1 y 2). Cada villa muestra su valor por m² frente a su zona (función del A2) y permite cotizar una estancia por fechas.
 
 Proyecto del curso *Applied Algorithmic Thinking* (Assignments 1 → 2 → 3). Catálogo, precios y contactos son ilustrativos; las fotos son de Unsplash y no corresponden a los inmuebles.
 
@@ -13,7 +13,8 @@ Proyecto del curso *Applied Algorithmic Thinking* (Assignments 1 → 2 → 3). C
 |---|---|---|
 | **Valor frente a su zona** (A2) | Nota bajo cada villa y sección "Valor frente a su zona" en la ficha | Calcula el valor/m² contra el promedio de las otras villas de su zona ([`js/price-tags.js`](js/price-tags.js)) |
 | **Cotizador de renta** | Ficha → elegir llegada y salida | Tarifa por noche = valor × tasa mensual de la temporada (alta 6 %, media 4 %, baja 3 %) ÷ 30; cobra noche por noche y exige mínimo 5 noches ([`js/finance.js`](js/finance.js)) |
-| **Mapa** | Botón "Mapa" | OpenStreetMap: vista por zonas; al acercarse, pines con tarifa que no se enciman y vista previa al pasar el mouse |
+| **Comprar / Rentar** | Selector junto al orden y pestañas en la ficha | La misma villa muestra precio de venta o cotizador de renta |
+| **Mapa** | Botón "Ver mapa" | Lista + mapa (OpenStreetMap) lado a lado: vista por zonas; al acercarse, pines que no se enciman, vista previa al pasar el mouse, la lista muestra solo lo que se ve en el mapa y resalta el pin de la tarjeta bajo el mouse |
 | **MXN / EUR / USD** | Selector del encabezado | Tipo de cambio en vivo (Frankfurter, BCE) con caché y respaldo |
 | **Guardadas** | Corazón, `#guardadas` | Persisten en el navegador |
 | **Solicitar reserva** | Ficha | Abre WhatsApp con fechas, noches y total cotizado (número de demo en `js/app.js`) |

@@ -293,3 +293,28 @@ b, strong, .btn, .card-price, .aside-price, .s-specs b, .facts dd, .calc-total {
 .pin-zona::before { display: none; }
 .rates dd { white-space: nowrap; padding-left: 12px; }
 .quote-out .line span:last-child, .quote-out .total span:last-child { white-space: nowrap; padding-left: 12px; }
+
+/* modo mapa: lista + mapa fijo, como un portal inmobiliario */
+.results.is-split { max-width: 1640px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px; align-items: start; }
+.results.is-split .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 18px; }
+.results.is-split .card-title { font-size: 1.35rem; }
+.results.is-split .map-wrap { position: sticky; top: calc(var(--header-h) + 16px); height: calc(100vh - var(--header-h) - 32px); min-height: 480px; }
+.card.is-hot .card-media { box-shadow: 0 0 0 2px var(--navy); }
+.pin.is-hot .pin-label { background: #fff; color: var(--navy); border-color: var(--navy); }
+.pin.is-hot::before { background: #fff; border-color: var(--navy); }
+@media (max-width: 1100px) { .results.is-split .grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) {
+  .results.is-split { display: block; }
+  .results.is-split .grid { display: none; }
+  .results.is-split .map-wrap { position: relative; top: 0; height: 72vh; }
+}
+
+.aside-tabs { justify-self: start; margin-bottom: 4px; }
+.op-switch button { min-width: 84px; }
+@media (max-width: 720px) { .toolbar-right { flex-wrap: wrap; } }
+
+.map-fab { position: fixed; z-index: 45; left: 50%; bottom: 22px; translate: -50% 0; display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--navy); color: #fff; font-weight: 400; letter-spacing: .02em; box-shadow: 0 12px 28px -10px rgba(15,30,61,.6); }
+.map-fab svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; }
+body.no-scroll .map-fab { display: none; }
+.map-reset { height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-2); background: #fff; color: var(--navy); font: 400 .85rem var(--sans); box-shadow: 0 2px 8px rgba(15,30,61,.15); }
+.leaflet-container { cursor: grab; }

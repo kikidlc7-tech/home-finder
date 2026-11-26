@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Azur · Villas en renta en la Costa Azul</title>
-<meta name="description" content="Villas en renta entre Saint-Tropez y Mónaco. Cotiza tu estancia en segundos.">
+<title>Azur · Villas en venta y renta en la Costa Azul</title>
+<meta name="description" content="Villas en venta y en renta entre Saint-Tropez y Mónaco.">
 <meta name="theme-color" content="#0F1E3D">
 <meta property="og:title" content="Azur · Villas en la Costa Azul">
 <meta property="og:description" content="Villas en renta entre Saint-Tropez y Mónaco.">
@@ -42,16 +42,20 @@
 
   <section class="intro wrap" id="coleccion">
     <h2 id="pageTitle">Villas</h2>
-    <p id="pageSub">Quince casas frente al Mediterráneo, de Saint-Tropez a Mónaco. Estancias desde cinco noches.</p>
+    <p id="pageSub"></p>
   </section>
 
   <div class="toolbar wrap">
     <div class="zones" id="zones" role="group" aria-label="Zona"></div>
     <div class="toolbar-right">
+      <div class="view-switch op-switch" role="group" aria-label="Operación">
+        <button type="button" data-op="comprar" aria-pressed="true">Comprar</button>
+        <button type="button" data-op="rentar" aria-pressed="false">Rentar</button>
+      </div>
       <label class="sort"><span class="sr-only">Ordenar</span>
         <select id="sort">
           <option value="precio-desc">Más exclusivas</option>
-          <option value="precio-asc">Tarifa más baja</option>
+          <option value="precio-asc">Precio más bajo</option>
           <option value="recomendadas">Mejor valor por m²</option>
         </select>
       </label>
@@ -64,17 +68,19 @@
 
   <p class="count wrap" id="resultCount" aria-live="polite"></p>
 
-  <section class="wrap" aria-labelledby="pageTitle">
+  <section class="wrap results" id="results" aria-labelledby="pageTitle">
     <div class="grid" id="grid"></div>
     <div class="map-wrap" id="mapWrap" hidden><div class="map" id="map"></div></div>
   </section>
 
   <section class="closing wrap" aria-labelledby="closingTitle">
-    <h2 id="closingTitle">¿Fechas flexibles?</h2>
-    <p>Cuéntanos cuándo quieres viajar y te proponemos la casa.</p>
+    <h2 id="closingTitle">¿Buscas algo en particular?</h2>
+    <p>Cuéntanos qué buscas, para comprar o para una temporada, y te proponemos la casa.</p>
     <a class="btn btn-solid" id="closingWa" target="_blank" rel="noopener" href="#">Escríbenos por WhatsApp</a>
   </section>
 </main>
+
+<button class="map-fab" id="mapFab" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Zm0 0v14m6-12v14"/></svg><span>Ver mapa</span></button>
 
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
   <div class="sheet-panel" id="sheetPanel"></div>
