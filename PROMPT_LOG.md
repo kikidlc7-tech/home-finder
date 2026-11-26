@@ -26,9 +26,9 @@
 3. «ponle fotos de casas reales» (25-nov).
 4. «mejora mi app 10,000 veces… actúa como 3 agentes… dame entregables A2 y A3…» (26-nov).
 5. «diseño y flujos tipo Zillow… mapa con clic», «landing de marca, colores futuristas, ultra high-end», «casas de ~120 millones», «casas en la Costa Azul de Francia», «nombre Home Finder Exclusive» (26-nov).
-6. «cambia color, ponle azul marino», «todo de un solo color, sencillo y elegante, las casas al inicio» (26-nov).
-7. «quita las etiquetas que se ven genéricas… cámbiale el nombre (una palabra)… que sea de renta: 4 % al mes del valor, 6 % en temporada alta, 3 % en baja, dividido por día, mínimo 5 días, cotización sencilla» (26-nov) → nombre **Azur**.
-8. «mejora el mapa como el anterior… mete más fotos… en el inicio la casa más chingona… fusiónalo con el de la pasada, quiero vender casas» (26-nov) → Comprar/Rentar, lista + mapa, 7–8 fotos por villa.
+6. «cambia el color, ponle azul marino» (26-nov).
+7. Probé otra versión: rediseño minimalista de un solo color, nombre «Azur», renta por noche con tasas por temporada (6 % alta, 4 % media, 3 % baja ÷ 30, mínimo 5 noches) y Comprar/Rentar (26-nov; commits `86ea26e`, `4b6cdf9`, `d721c4c`).
+8. «mándame la primera, la que se llama Home Finder… la que tenía fotos, la que hicimos hace 20 minutos» (26-nov) → se regresó a Home Finder Exclusive en azul marino (commit de este cambio). La versión Azur queda en el historial.
 
 ### Propuestas de la IA para que decidas
 Cada fila es algo que la IA decidió o cambió por su cuenta, o que tocó tu especificación. Escribe tu veredicto y tu razón (1–2 líneas, citando el campo de la spec en juego).
@@ -43,8 +43,6 @@ Cada fila es algo que la IA decidió o cambió por su cuenta, o que tocó tu esp
 | 6 | **Error detectado por el auditor 2:** −14.6 % se mostraba como "−15 %" pero decía "Precio en rango". La IA propuso clasificar con el mismo % redondeado. | Cómo se sabrá que funciona | | |
 | 7 | **Algoritmo O(n)** en lugar de O(n²): mismo resultado (hay prueba de equivalencia), 9.1 s → 6.9 ms con 10,000 propiedades. | Qué hace (no debería cambiar) | | |
 | 8 | **Catálogo nuevo** (17 propiedades de la Costa Azul, precios en EUR, 2–4 por zona) a partir de tu pedido. Esto cambia los resultados de cualquier caso de prueba que hayas escrito con los datos viejos. | Datos/inputs | | |
-| 10 | **La IA te advirtió:** pediste quitar las etiquetas; son tu función del A2. Si no se ven en el deploy, la rúbrica la toma como inexistente. Se conservaron como nota de texto ("Buena oportunidad · 30 % bajo su zona") y sección en la ficha. | Qué hace | | |
-| 11 | **Renta noche por noche:** cada noche usa la tasa de su temporada (alta jun–sep 6 %, media abr/may/oct 4 %, baja nov–mar 3 %); los meses de cada temporada los eligió la IA. Las etiquetas siguen calculándose con el **valor de venta**/m² (la tarifa es proporcional al valor, así que el resultado sería idéntico). | Datos/inputs | | |
 | 9 | **Funciones extra no pedidas en tu spec:** mostrar los comparables en la ficha, barra de posición vs. promedio, filtro "Precio vs. zona", orden "Mejor precio vs. su zona". | Qué hace (alcance) | | |
 
 ⚠️ **Limitación que señala la IA:** con 1 a 3 comparables por zona, una sola propiedad muy cara mueve el promedio. Ejemplo real: en Saint-Tropez, la villa de €22 M (+70 %) hace que las otras dos salgan "Buena oportunidad". Tus opciones: aceptarlo y documentarlo, pedir un mínimo de comparables o usar la mediana. Cualquiera de las dos últimas cambia tu especificación.
@@ -57,7 +55,7 @@ Cómo correrlo, ya con el deploy arriba:
 - **En el deploy:** abre `https://TU-DEPLOY.vercel.app/#propiedad-13` y copia el texto de la sección "¿El precio es razonable?".
 - **En código:** `node tests/validacion.js 13` (o el id que elijas) y copia la salida completa.
 
-Caso límite sugerido (no obligatorio): la #13 (Gassin) queda justo en el umbral (−15.45 %). Para el cotizador: `#propiedad-2`, llegada 2027-05-29, salida 2027-06-04 (cruza temporada media → alta).
+Caso límite sugerido (no obligatorio): la #13 (Gassin) queda justo en el umbral (−15.45 %).
 
 ✍️ **Input exacto que usaste:**
 
@@ -77,6 +75,6 @@ _(Opcional: más casos de prueba)_
 
 **Herramientas:** Claude (claude.ai, con agentes y navegador) para construir, auditar y desplegar; Claude in Chrome para crear el repo y el proyecto en Vercel; GitHub y Vercel para alojar el código y el deploy.
 
-**Para qué la usé:** construir la función de etiquetas de precio (`js/price-tags.js`) y el cotizador de renta (`js/finance.js`); auditar la app con 3 agentes independientes (diseño, flujos, accesibilidad/seguridad/escalabilidad: `docs/revision/`); rediseñar la interfaz; escribir pruebas (`tests/`); preparar el deploy y esta documentación.
+**Para qué la usé:** construir la función de etiquetas de precio (`js/price-tags.js`); auditar la app con 3 agentes independientes (diseño, flujos, accesibilidad/seguridad/escalabilidad: `docs/revision/`); rediseñar la interfaz; escribir pruebas (`tests/`); preparar el deploy y esta documentación.
 
-✍️ **Qué decidí o verifiqué yo:** _(esto lo escribes tú: qué propuestas aceptaste, rechazaste o cambiaste y qué comprobaste por tu cuenta)_
+✍️ **Qué decidí o verifiqué yo:** _(esto lo escribes tú: qué propuestas aceptaste, rechazaste o cambiaste —por ejemplo, regresar de Azur a Home Finder Exclusive— y qué comprobaste por tu cuenta)_

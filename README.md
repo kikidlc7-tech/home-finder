@@ -1,6 +1,6 @@
-# Azur
+# Home Finder Exclusive
 
-Villas de lujo en venta y en renta en la Costa Azul (Saint-Tropez → Mónaco). Antes se llamó **Home Finder** (Assignments 1 y 2). Cada villa muestra su valor por m² frente a su zona (función del A2) y permite cotizar una estancia por fechas.
+Residencias de lujo en la Costa Azul (Saint-Tropez → Mónaco) con **el precio en contexto**: cada propiedad muestra si su precio por m² está por debajo, en rango o por encima del promedio de las demás de su zona.
 
 Proyecto del curso *Applied Algorithmic Thinking* (Assignments 1 → 2 → 3). Catálogo, precios y contactos son ilustrativos; las fotos son de Unsplash y no corresponden a los inmuebles.
 
@@ -11,13 +11,12 @@ Proyecto del curso *Applied Algorithmic Thinking* (Assignments 1 → 2 → 3). C
 
 | Función | Dónde probarla | Qué la hace "real" |
 |---|---|---|
-| **Valor frente a su zona** (A2) | Nota bajo cada villa y sección "Valor frente a su zona" en la ficha | Calcula el valor/m² contra el promedio de las otras villas de su zona ([`js/price-tags.js`](js/price-tags.js)) |
-| **Cotizador de renta** | Ficha → elegir llegada y salida | Tarifa por noche = valor × tasa mensual de la temporada (alta 6 %, media 4 %, baja 3 %) ÷ 30; cobra noche por noche y exige mínimo 5 noches ([`js/finance.js`](js/finance.js)) |
-| **Comprar / Rentar** | Selector junto al orden y pestañas en la ficha | La misma villa muestra precio de venta o cotizador de renta |
-| **Mapa** | Botón "Ver mapa" | Lista + mapa (OpenStreetMap) lado a lado: vista por zonas; al acercarse, pines que no se enciman, vista previa al pasar el mouse, la lista muestra solo lo que se ve en el mapa y resalta el pin de la tarjeta bajo el mouse |
-| **MXN / EUR / USD** | Selector del encabezado | Tipo de cambio en vivo (Frankfurter, BCE) con caché y respaldo |
-| **Guardadas** | Corazón, `#guardadas` | Persisten en el navegador |
-| **Solicitar reserva** | Ficha | Abre WhatsApp con fechas, noches y total cotizado (número de demo en `js/app.js`) |
+| **Etiqueta de precio vs. zona** (A2) | Tarjetas, pines del mapa y sección "¿El precio es razonable?" de cada ficha | Calcula con los datos el precio/m² contra el promedio de las otras propiedades de su zona y tipo ([`js/price-tags.js`](js/price-tags.js)) |
+| **Búsqueda con filtros y mapa** | `#buscar` | Filtra por zona, precio, recámaras, baños, tipo, etiqueta y amenidades; ordena; "Buscar mientras muevo el mapa" filtra por el área visible |
+| **Precios en MXN / EUR / USD** | Selector de moneda del encabezado | Tipo de cambio en vivo de la API de Frankfurter (BCE), con caché de 12 h y respaldo |
+| **Costo mensual estimado** | Ficha de casas y departamentos | Amortización con enganche, plazo y tasa ajustables + gastos de comunidad ([`js/finance.js`](js/finance.js)) |
+| **Guardadas** | Corazón en tarjetas/ficha, `#guardadas` | Persisten en el navegador (localStorage) |
+| **Contacto** | Ficha y formulario | Valida y abre WhatsApp con el mensaje armado (número de demo en `js/app.js` → `CONFIG`) |
 
 ## Cómo correrlo
 
@@ -26,7 +25,7 @@ Es un sitio estático, sin build ni dependencias:
 ```bash
 python3 -m http.server 8000     # o cualquier servidor estático
 # abre http://localhost:8000
-node --test tests/*.test.js      # 17 pruebas de la lógica (etiquetas y cotizador)
+node --test tests/*.test.js      # pruebas de la lógica
 node tests/validacion.js 13      # etiqueta de una propiedad, para el registro de validación
 node tests/benchmark.js          # O(n²) del A2 vs. O(n) actual
 node tests/verificar-fotos.mjs   # revisa que las fotos de Unsplash respondan (requiere internet)
@@ -37,12 +36,12 @@ Deploy en Vercel: Framework **Other**, sin Build Command ni Output Directory. Lo
 ## Estructura
 
 ```
-index.html            vistas: #inicio (portada + villas + mapa), #guardadas, #propiedad-N (ficha)
-css/styles.css        diseño (Cormorant Garamond + Jost; un solo color: azul marino)
+index.html            vistas: #inicio (landing), #buscar, #guardadas, #propiedad-N (ficha)
+css/styles.css        diseño (Instrument Serif + Geist; tinta mediterránea + azul marino)
 js/price-tags.js      función del A2 (O(n)), sin dependencias, probada en node
-js/finance.js         tarifas de renta, cotización y conversión de moneda
+js/finance.js         hipoteca y conversión de moneda
 js/app.js             interfaz, rutas, filtros, mapa, ficha, formulario
-data/propiedades.json catálogo (valores en EUR) y reglas de renta
+data/propiedades.json catálogo (precios en EUR)
 vendor/leaflet/       Leaflet 1.9.4 servido localmente (BSD-2)
 tests/                pruebas, validación y benchmark
 docs/                 revisión de 3 agentes, datos para el diagnóstico S22, guías
@@ -92,8 +91,8 @@ docs/                 revisión de 3 agentes, datos para el diagnóstico S22, gu
 - **Qué decidí:**
 - **Por qué:**
 
-### 7. Pasar de venta a renta y quitar las insignias de color — *tu decisión de producto*
-- **Qué propuso el IS:** al pedir renta con tasas de 3/4/6 % mensual del valor, el IS cobra **noche por noche** según la temporada de cada fecha (una estancia de mayo a junio mezcla tarifas) y valida el mínimo de 5 noches; quitó los terrenos (no se rentan). Al pedir quitar las "etiquetas que se ven genéricas", el IS **advirtió** que la etiqueta es la función del A2 y que, si desaparece del deploy, la rúbrica la cuenta como inexistente (Nivel 0); propuso conservarla como texto discreto.
+### 7. Versión "Azur" (renta y minimalismo) y regreso a Home Finder Exclusive — *tu decisión de producto*
+- **Qué propuso el IS:** construyó la versión Azur que pediste (renta por temporada, un solo color, insignias como texto) y advirtió que quitar las etiquetas borraría tu función del A2 del deploy. Después pediste volver a esta versión; el IS la restauró y dejó Azur en el historial (commits `86ea26e`–`d721c4c`).
 - **Qué decidí:**
 - **Por qué:**
 

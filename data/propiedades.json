@@ -1,5 +1,5 @@
 {
- "version": 4,
+ "version": 3,
  "moneda": "EUR",
  "tipoCambioRespaldo": {
   "EUR_MXN": 21.52,
@@ -7,7 +7,7 @@
   "fecha": "2026-11-26",
   "fuente": "Frankfurter (BCE); se usa solo si la API no responde"
  },
- "nota": "Catálogo ilustrativo para un proyecto académico. Propiedades, valores, tarifas y contactos no son reales; las fotos (Unsplash) son ilustrativas.",
+ "nota": "Catálogo ilustrativo para un proyecto académico. Propiedades, precios y datos de contacto no son reales; las fotos (Unsplash) son ilustrativas.",
  "propiedades": [
   {
    "id": 1,
@@ -78,11 +78,6 @@
      "id": "1507652313519-d4e9174996dd",
      "autor": "Jared Rice",
      "alt": "Tina exenta"
-    },
-    {
-     "id": "1577495508326-19a1b3cf65b7",
-     "autor": "Fabian Wiktor",
-     "alt": "Fachada clásica de la residencia"
     }
    ]
   },
@@ -154,16 +149,6 @@
      "id": "1765745518673-b562b7304a53",
      "autor": "Puscas Adryan",
      "alt": "Baño de mármol y madera"
-    },
-    {
-     "id": "1713843841925-6af6ed0df472",
-     "autor": "Milin John",
-     "alt": "Vista al océano desde la terraza"
-    },
-    {
-     "id": "1730126680640-bb6c3549d775",
-     "autor": "Chris Weiher",
-     "alt": "Vista al mar entre árboles"
     }
    ]
   },
@@ -228,16 +213,6 @@
      "id": "1584622650111-993a426fbf0a",
      "autor": "Lotus Design N Print",
      "alt": "Baño con regadera y doble lavabo"
-    },
-    {
-     "id": "1759372945658-1e9f56e751bd",
-     "autor": "kadek wahyudi",
-     "alt": "Villa con alberca al anochecer"
-    },
-    {
-     "id": "1674164967149-d1c9db1bd9cc",
-     "autor": "Chelsea Essig",
-     "alt": "Vista a la bahía entre pinos"
     }
    ],
    "terreno": 0,
@@ -311,11 +286,6 @@
      "id": "1758026164848-0a9fb178c070",
      "autor": "Maurits Bausenhart",
      "alt": "Terraza con alberca y sombrillas"
-    },
-    {
-     "id": "1779667953966-49969275689a",
-     "autor": "Noémie Chassé",
-     "alt": "Portón con buganvilias"
     }
    ]
   },
@@ -388,11 +358,6 @@
      "id": "1771372012124-f7696f374a5a",
      "autor": "GoodLifeConstruction",
      "alt": "Baño con tina exenta y doble lavabo"
-    },
-    {
-     "id": "1613490493576-7fde63acd811",
-     "autor": "Avi Werde",
-     "alt": "Fachada contemporánea de concreto y madera"
     }
    ]
   },
@@ -464,16 +429,6 @@
      "id": "1631889993959-41b4e9c6e3c5",
      "autor": "Backbone",
      "alt": "Baño completo con tina"
-    },
-    {
-     "id": "1564912783529-cc38232302ec",
-     "autor": "Thomas Dumortier",
-     "alt": "Casa de piedra rodeada de verde"
-    },
-    {
-     "id": "1686250292336-2ad6183596c0",
-     "autor": "Radek Kozák",
-     "alt": "Fachada con contraventanas rojas"
     }
    ]
   },
@@ -537,16 +492,6 @@
      "id": "1611095210561-67f0832b1ca3",
      "autor": "Lotus Design N Print",
      "alt": "Antecomedor"
-    },
-    {
-     "id": "1674758979141-4e3521ba7321",
-     "autor": "Timo Wielink",
-     "alt": "Fachada blanca con balcones"
-    },
-    {
-     "id": "1600596542815-ffad4c1539a9",
-     "autor": "Frames For Your Heart",
-     "alt": "Residencia blanca con jardín frontal"
     }
    ],
    "terreno": 0,
@@ -626,14 +571,8 @@
      "id": "1733426107854-ee00a25d72a7",
      "autor": "Murad Kerimli",
      "alt": "Baño con tina y ventanal"
-    },
-    {
-     "id": "1512917774080-9991f1c4c750",
-     "autor": "Frames For Your Heart",
-     "alt": "Alberca frente a la residencia"
     }
-   ],
-   "destacada": true
+   ]
   },
   {
    "id": 9,
@@ -696,16 +635,6 @@
      "id": "1616486029423-aaa4789e8c9a",
      "autor": "Spacejoy",
      "alt": "Recámara iluminada"
-    },
-    {
-     "id": "1505843513577-22bb7d21e455",
-     "autor": "Daniel Barnes",
-     "alt": "Residencia iluminada al anochecer"
-    },
-    {
-     "id": "1580494767366-82f4e74f5655",
-     "autor": "Tessa Edmiston",
-     "alt": "Fachada blanca con detalles de madera"
     }
    ],
    "mediosBanos": 0
@@ -772,16 +701,6 @@
      "id": "1505693416388-ac5ce068fe85",
      "autor": "Quilia",
      "alt": "Recámara con cabecera capitonada"
-    },
-    {
-     "id": "1709607855633-8a54cb550773",
-     "autor": "Alena Chili",
-     "alt": "Árbol frente a la casa"
-    },
-    {
-     "id": "1505843795480-5cfb3c03f6ff",
-     "autor": "Daniel Barnes",
-     "alt": "Vista aérea de la residencia y su jardín"
     }
    ]
   },
@@ -853,11 +772,6 @@
      "id": "1765434670017-c0d28ecde29a",
      "autor": "Puscas Adryan",
      "alt": "Recámara con libreros"
-    },
-    {
-     "id": "1758448756207-54505680d130",
-     "autor": "Aalo Lens",
-     "alt": "Fachada de piedra y concreto con jardín"
     }
    ]
   },
@@ -928,16 +842,6 @@
      "id": "1770941633927-b7a15557e0e1",
      "autor": "Clay Banks",
      "alt": "Recámara con área de estar"
-    },
-    {
-     "id": "1567190312884-6a9129968dc3",
-     "autor": "Elisa Schmidt",
-     "alt": "Fachada de color terracota"
-    },
-    {
-     "id": "1782202394603-8ddb52fb026a",
-     "autor": "Rich Martello",
-     "alt": "Casa entre árboles bajo cielo azul"
     }
    ],
    "mediosBanos": 0
@@ -1004,16 +908,6 @@
      "id": "1578683010236-d716f9a3f461",
      "autor": "Roberto Nickson",
      "alt": "Recámara con área de estar"
-    },
-    {
-     "id": "1603085429201-64dadaec4061",
-     "autor": "Éric Deschaintre",
-     "alt": "Terreno frente al mar"
-    },
-    {
-     "id": "1757524492552-d47a66a2b63e",
-     "autor": "Michael Brown",
-     "alt": "Casa moderna con grandes ventanales al anochecer"
     }
    ]
   },
@@ -1078,16 +972,6 @@
      "id": "1772563214602-3c6434766700",
      "autor": "Elias Storm",
      "alt": "Recámara con ventanal"
-    },
-    {
-     "id": "1772544152057-c95a2c75a1e4",
-     "autor": "Shalev Cohen",
-     "alt": "Ladera con casas entre árboles"
-    },
-    {
-     "id": "1580587771525-78b9dba3b914",
-     "autor": "Ярослав Алексеенко",
-     "alt": "Fachada moderna en dos niveles"
     }
    ],
    "mediosBanos": 0
@@ -1154,48 +1038,116 @@
      "id": "1623908112789-c33795afd551",
      "autor": "Arvydas Baltinas",
      "alt": "Villa entre árboles"
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "titulo": "Terreno con vista al mar en Èze",
+   "tipo": "Terreno",
+   "estado": "En venta",
+   "precio": 2800000,
+   "zona": "Riviera Este",
+   "comuna": "Èze",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.732,
+   "lng": 7.355,
+   "terreno": 2000,
+   "recamaras": 0,
+   "banos": 0,
+   "estacionamientos": 0,
+   "niveles": 0,
+   "anio": null,
+   "gastos": 0,
+   "vista": "Mar Mediterráneo",
+   "distanciaMar": 900,
+   "distanciaAeropuerto": 19,
+   "seguridad": "Camino privado",
+   "amenidades": [
+    "Permiso de construcción vigente",
+    "Servicios a pie de lote",
+    "Vista al mar"
+   ],
+   "destacados": [
+    "Permiso para 350 m² de construcción",
+    "Vista abierta al mar",
+    "Camino privado"
+   ],
+   "descripcion": "Terreno en ladera con vista abierta al Mediterráneo y permiso de construcción vigente para una villa de 350 m². Servicios a pie de lote y acceso por camino privado.",
+   "publicado": "2026-10-08",
+   "fotos": [
+    {
+     "id": "1718995742144-210fece0874b",
+     "autor": "Karin Kim",
+     "alt": "Terreno con vista desde la loma"
+    },
+    {
+     "id": "1772544152057-c95a2c75a1e4",
+     "autor": "Shalev Cohen",
+     "alt": "Ladera con casas entre árboles"
+    },
+    {
+     "id": "1674164967149-d1c9db1bd9cc",
+     "autor": "Chelsea Essig",
+     "alt": "Vista a la bahía entre pinos"
+    }
+   ],
+   "mediosBanos": 0,
+   "m2": 0
+  },
+  {
+   "id": 17,
+   "titulo": "Terreno edificable en Roquebrune-Cap-Martin",
+   "tipo": "Terreno",
+   "estado": "Precio reducido",
+   "precio": 1900000,
+   "zona": "Riviera Este",
+   "comuna": "Roquebrune-Cap-Martin",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.762,
+   "lng": 7.46,
+   "terreno": 1600,
+   "recamaras": 0,
+   "banos": 0,
+   "estacionamientos": 0,
+   "niveles": 0,
+   "anio": null,
+   "gastos": 0,
+   "vista": "Bahía y montaña",
+   "distanciaMar": 1200,
+   "distanciaAeropuerto": 27,
+   "seguridad": "Calle residencial",
+   "amenidades": [
+    "Uso residencial",
+    "Servicios a pie de lote",
+    "Orientación sur"
+   ],
+   "destacados": [
+    "Orientación sur",
+    "Precio reducido 8% en septiembre",
+    "A 5 min de Mónaco"
+   ],
+   "descripcion": "Terreno edificable con orientación sur en una calle residencial tranquila, con vista a la bahía y a la montaña. Tiene servicios a pie de lote y está a cinco minutos de Mónaco.",
+   "publicado": "2026-09-20",
+   "fotos": [
+    {
+     "id": "1603085429201-64dadaec4061",
+     "autor": "Éric Deschaintre",
+     "alt": "Terreno frente al mar"
+    },
+    {
+     "id": "1730126680640-bb6c3549d775",
+     "autor": "Chris Weiher",
+     "alt": "Vista al mar entre árboles"
     },
     {
      "id": "1772544152341-27580cb5373f",
      "autor": "Shalev Cohen",
      "alt": "Terreno arbolado en ladera"
-    },
-    {
-     "id": "1613977257365-aaae5a9817ff",
-     "autor": "John Fornander",
-     "alt": "Villa con alberca y vista abierta"
     }
-   ]
+   ],
+   "mediosBanos": 0,
+   "m2": 0
   }
- ],
- "renta": {
-  "descripcion": "Tarifa por noche = valor de la propiedad × tasa mensual de la temporada ÷ 30 (regla definida por el alumno).",
-  "tasasMensuales": {
-   "alta": 0.06,
-   "media": 0.04,
-   "baja": 0.03
-  },
-  "temporadas": {
-   "alta": [
-    6,
-    7,
-    8,
-    9
-   ],
-   "media": [
-    4,
-    5,
-    10
-   ],
-   "baja": [
-    11,
-    12,
-    1,
-    2,
-    3
-   ]
-  },
-  "diasPorMes": 30,
-  "minNoches": 5
- }
+ ]
 }

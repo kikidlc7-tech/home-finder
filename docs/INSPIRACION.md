@@ -1,8 +1,8 @@
 # Inspiración de diseño y flujos
 
-Patrones tomados (no copiados) de portales y sitios de lujo, y cómo se tradujeron en Azur:
+Patrones tomados (no copiados) de portales y sitios de lujo, y cómo se tradujeron en Home Finder Exclusive:
 
-| Patrón observado | De dónde | En Azur |
+| Patrón observado | De dónde | En Home Finder Exclusive |
 |---|---|---|
 | Búsqueda dividida: lista + mapa sincronizados, pines con precio | Zillow / Redfin | `#buscar`: hover en tarjeta resalta el pin y viceversa; "Buscar mientras muevo el mapa" |
 | Filtros como píldoras con menú, chips de filtros activos | Zillow | Barra de filtros fija con resumen en cada píldora y chips para quitar |

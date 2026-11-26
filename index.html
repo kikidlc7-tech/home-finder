@@ -3,96 +3,272 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Azur · Villas en venta y renta en la Costa Azul</title>
-<meta name="description" content="Villas en venta y en renta entre Saint-Tropez y Mónaco.">
-<meta name="theme-color" content="#0F1E3D">
-<meta property="og:title" content="Azur · Villas en la Costa Azul">
-<meta property="og:description" content="Villas en renta entre Saint-Tropez y Mónaco.">
+<title>Home Finder Exclusive · Residencias en la Costa Azul con el precio en contexto</title>
+<meta name="description" content="Residencias de lujo entre Saint-Tropez y Mónaco. Cada ficha compara su precio por m² con las propiedades de su zona.">
+<meta name="theme-color" content="#0B1B2E">
+<meta property="og:title" content="Home Finder Exclusive · Costa Azul">
+<meta property="og:description" content="Residencias de lujo en la Riviera francesa con análisis de precio por zona.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F1E3D'/%3E%3Cpath d='M9 19a7 7 0 0 1 14 0M4 19h24M8 23h16' stroke='%23fff' stroke-width='1.6' fill='none'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B1B2E'/%3E%3Cpath d='M8 15.5 16 9l8 6.5V24h-5.5v-5h-5v5H8z' fill='%238FB0FF'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 
-<header class="site">
+<header class="site" id="siteHeader">
   <div class="site-inner">
-    <a class="brand" href="#inicio" aria-label="Azur, inicio">
-      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 19a7 7 0 0 1 14 0"/><path d="M4 19h24M8 23h16M12 27h8"/></svg>
-      <span class="wordmark">Azur</span>
+    <a class="brand" href="#inicio" aria-label="Home Finder Exclusive, ir al inicio">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8 15.5 16 9l8 6.5V24h-5.5v-5h-5v5H8z"/></svg>
+      <span>Home Finder <em>Exclusive</em></span>
     </a>
-    <nav class="main-nav" aria-label="Principal">
-      <a href="#coleccion" data-go="coleccion">Villas</a>
-      <a href="#coleccion" data-go="mapa">Mapa</a>
-      <a href="#contacto" data-go="contacto">Contacto</a>
+    <nav class="main-nav" id="mainNav" aria-label="Principal">
+      <a href="#buscar">Propiedades</a>
+      <a href="#buscar" data-open-map>Mapa</a>
+      <a href="#inicio" data-scroll="contexto">Cómo comparamos precios</a>
+      <a href="#inicio" data-scroll="contacto">Contacto</a>
     </nav>
     <div class="header-tools">
-      <label class="currency"><span class="sr-only">Moneda</span>
-        <select id="currency"><option>MXN</option><option>EUR</option><option>USD</option></select>
+      <label class="currency">
+        <span class="sr-only">Moneda</span>
+        <select id="currency" aria-describedby="fxNote">
+          <option value="MXN">MXN</option>
+          <option value="EUR">EUR</option>
+          <option value="USD">USD</option>
+        </select>
       </label>
-      <a class="saved-link" href="#guardadas" aria-label="Guardadas">
+      <a class="saved-link" href="#guardadas" id="savedLink">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.5 6.8 4.5c2.1 0 3.6 1.1 5.2 3 1.6-1.9 3.1-3 5.2-3 3.5 0 5.4 3.5 4.1 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg>
-        <span class="saved-count" id="savedCount">0</span>
+        <span>Guardadas</span><span class="saved-count" id="savedCount">0</span>
       </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">
+        <span class="sr-only">Abrir menú</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </div>
 </header>
 
 <main id="main" tabindex="-1">
-  <section class="cover" id="cover" aria-label="Residencia destacada"></section>
 
-  <section class="intro wrap" id="coleccion">
-    <h2 id="pageTitle">Villas</h2>
-    <p id="pageSub"></p>
+<!-- =================== INICIO (landing) =================== -->
+<div class="view" id="view-inicio" data-view="inicio">
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-media" id="heroMedia"></div>
+    <div class="hero-inner">
+      <h1 id="heroTitle">La Costa Azul, con el precio en&nbsp;contexto.</h1>
+      <p class="hero-sub" id="heroSub">Residencias entre Saint-Tropez y Mónaco. Cada ficha compara su precio por m² con las propiedades de su zona.</p>
+      <form class="hero-search" id="heroSearch" role="search">
+        <label class="hs-field">
+          <span>Dónde</span>
+          <select id="heroZona"><option value="">Toda la Costa Azul</option></select>
+        </label>
+        <label class="hs-field">
+          <span>Tipo</span>
+          <select id="heroTipo">
+            <option value="">Cualquiera</option>
+            <option value="Casa">Villa o casa</option>
+            <option value="Departamento">Departamento</option>
+            <option value="Terreno">Terreno</option>
+          </select>
+        </label>
+        <button class="btn btn-brand" type="submit">Buscar propiedades</button>
+      </form>
+    </div>
+    <a class="hero-proof" id="heroProof" href="#buscar"></a>
   </section>
 
-  <div class="toolbar wrap">
-    <div class="zones" id="zones" role="group" aria-label="Zona"></div>
-    <div class="toolbar-right">
-      <div class="view-switch op-switch" role="group" aria-label="Operación">
-        <button type="button" data-op="comprar" aria-pressed="true">Comprar</button>
-        <button type="button" data-op="rentar" aria-pressed="false">Rentar</button>
+  <section class="band" aria-labelledby="mercadosTitle">
+    <div class="wrap">
+      <div class="band-head">
+        <h2 id="mercadosTitle">Cinco mercados, una misma vara para medir</h2>
+        <p>El promedio por m² de cada zona sale de las propiedades que hoy tenemos en venta.</p>
       </div>
-      <label class="sort"><span class="sr-only">Ordenar</span>
-        <select id="sort">
-          <option value="precio-desc">Más exclusivas</option>
-          <option value="precio-asc">Precio más bajo</option>
-          <option value="recomendadas">Mejor valor por m²</option>
-        </select>
+      <div class="markets" id="markets"></div>
+    </div>
+  </section>
+
+  <section class="band band-tight" aria-labelledby="destacadasTitle">
+    <div class="wrap">
+      <div class="band-head row">
+        <h2 id="destacadasTitle">Exclusivas de la temporada</h2>
+        <a class="link-strong" href="#buscar">Ver las 17 propiedades</a>
+      </div>
+      <div class="featured" id="featured"></div>
+    </div>
+  </section>
+
+  <section class="band band-ink" id="contexto" aria-labelledby="contextoTitle">
+    <div class="wrap context">
+      <div class="context-copy">
+        <h2 id="contextoTitle">Así sabes si un precio es razonable</h2>
+        <p>Tomamos el precio por m² de la propiedad y lo comparamos con el promedio de las demás de su zona y su tipo: villas y departamentos por m² construido, terrenos por m² de terreno.</p>
+        <ul class="rules">
+          <li><span class="tag tag-op">Buena oportunidad</span> 15 % o más por debajo del promedio</li>
+          <li><span class="tag tag-ok">Precio en rango</span> a menos de 15 % del promedio</li>
+          <li><span class="tag tag-hi">Precio alto</span> 15 % o más por encima del promedio</li>
+        </ul>
+        <p class="fine">Es una referencia para negociar, no un avalúo. Con pocas propiedades en una zona, la comparación pesa más en cada caso.</p>
+      </div>
+      <figure class="context-viz" id="contextViz" aria-label="Ejemplo de comparación de precio por m²"></figure>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="galeriaTitle">
+    <div class="wrap">
+      <div class="gallery-profile">
+        <svg class="brand-mark big" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8 15.5 16 9l8 6.5V24h-5.5v-5h-5v5H8z"/></svg>
+        <div>
+          <h2 id="galeriaTitle">Detrás de cada puerta</h2>
+          <p><strong id="galeriaCount">0</strong> fotos de <strong id="galeriaProps">0</strong> residencias. Toca una para abrir su ficha.</p>
+        </div>
+      </div>
+      <div class="ig-grid" id="igGrid"></div>
+      <div class="center"><button class="btn btn-ghost" id="igMore">Ver más fotos</button></div>
+    </div>
+  </section>
+
+  <section class="band band-soft" id="contacto" aria-labelledby="contactoTitle">
+    <div class="wrap contact">
+      <div>
+        <h2 id="contactoTitle">Agenda una visita privada</h2>
+        <p>Cuéntanos qué buscas. Al enviar, se abre WhatsApp con tu mensaje listo; tú decides si lo mandas.</p>
+        <dl class="contact-data">
+          <div><dt>WhatsApp</dt><dd id="contactPhone"></dd></div>
+          <div><dt>Correo</dt><dd id="contactEmail"></dd></div>
+          <div><dt>Horario</dt><dd>Lunes a sábado, 9:00 a 19:00 (hora de París)</dd></div>
+        </dl>
+      </div>
+      <form class="form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="cName">Nombre</label>
+            <input id="cName" name="nombre" autocomplete="name" required minlength="2" maxlength="60">
+            <p class="err" id="cNameErr" hidden>Escribe tu nombre (mínimo 2 letras).</p>
+          </div>
+          <div class="field">
+            <label for="cPhone">Teléfono <span class="opt">(opcional)</span></label>
+            <input id="cPhone" name="telefono" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+52 55 1234 5678">
+            <p class="err" id="cPhoneErr" hidden>Usa de 10 a 15 dígitos; puedes incluir + y espacios.</p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="cInterest">Propiedad de interés</label>
+          <select id="cInterest" name="interes"><option value="">Todavía no lo sé</option></select>
+        </div>
+        <div class="field">
+          <label for="cMsg">Mensaje <span class="opt">(opcional)</span></label>
+          <textarea id="cMsg" name="mensaje" maxlength="500" rows="4" placeholder="Fechas para visitar, presupuesto, si buscas vista al mar…"></textarea>
+        </div>
+        <button class="btn btn-brand btn-block" type="submit">Abrir WhatsApp con mi mensaje</button>
+        <p class="form-status" id="formStatus" role="status"></p>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- =================== BUSCAR (lista + mapa) =================== -->
+<div class="view" id="view-buscar" data-view="buscar" hidden>
+  <div class="filterbar" id="filterbar">
+    <div class="fb-inner">
+      <label class="fb-search">
+        <span class="sr-only">Buscar por comuna, zona o nombre</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="q" type="search" placeholder="Comuna, zona o nombre" autocomplete="off">
       </label>
-      <div class="view-switch" role="group" aria-label="Vista">
-        <button type="button" data-mode="lista" aria-pressed="true">Fotos</button>
-        <button type="button" data-mode="mapa" aria-pressed="false">Mapa</button>
+      <div class="fb-pills" id="fbPills">
+        <div class="pill-wrap">
+          <button class="pill" type="button" aria-expanded="false" aria-controls="popZona" data-pop="popZona"><span>Zona</span><b id="pillZona"></b></button>
+          <div class="pop" id="popZona" hidden><fieldset><legend>Zona</legend><div id="zonaOpts" class="checks"></div></fieldset></div>
+        </div>
+        <div class="pill-wrap">
+          <button class="pill" type="button" aria-expanded="false" aria-controls="popPrecio" data-pop="popPrecio"><span>Precio</span><b id="pillPrecio"></b></button>
+          <div class="pop" id="popPrecio" hidden>
+            <fieldset><legend>Precio total</legend>
+              <div class="minmax">
+                <label>Mínimo<select id="fMin"></select></label>
+                <label>Máximo<select id="fMax"></select></label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="pill-wrap">
+          <button class="pill" type="button" aria-expanded="false" aria-controls="popRec" data-pop="popRec"><span>Recámaras</span><b id="pillRec"></b></button>
+          <div class="pop" id="popRec" hidden>
+            <fieldset><legend>Recámaras</legend><div class="seg" id="segRec" role="group"></div></fieldset>
+            <fieldset><legend>Baños</legend><div class="seg" id="segBan" role="group"></div></fieldset>
+          </div>
+        </div>
+        <div class="pill-wrap">
+          <button class="pill" type="button" aria-expanded="false" aria-controls="popTipo" data-pop="popTipo"><span>Tipo</span><b id="pillTipo"></b></button>
+          <div class="pop" id="popTipo" hidden><fieldset><legend>Tipo de propiedad</legend><div class="checks" id="tipoOpts"></div></fieldset></div>
+        </div>
+        <div class="pill-wrap">
+          <button class="pill" type="button" aria-expanded="false" aria-controls="popEtiqueta" data-pop="popEtiqueta"><span>Precio vs. zona</span><b id="pillEtiqueta"></b></button>
+          <div class="pop" id="popEtiqueta" hidden><fieldset><legend>Comparado con su zona</legend><div class="checks" id="etiquetaOpts"></div></fieldset></div>
+        </div>
+        <div class="pill-wrap">
+          <button class="pill" type="button" aria-expanded="false" aria-controls="popMas" data-pop="popMas"><span>Más</span><b id="pillMas"></b></button>
+          <div class="pop pop-wide" id="popMas" hidden><fieldset><legend>Debe tener</legend><div class="checks cols" id="amenOpts"></div></fieldset></div>
+        </div>
+        <button class="pill pill-toggle" type="button" id="onlySaved" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.5 6.8 4.5c2.1 0 3.6 1.1 5.2 3 1.6-1.9 3.1-3 5.2-3 3.5 0 5.4 3.5 4.1 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg>
+          Guardadas
+        </button>
+        <button class="pill pill-reset" type="button" id="btnReset" hidden>Limpiar filtros</button>
       </div>
     </div>
   </div>
 
-  <p class="count wrap" id="resultCount" aria-live="polite"></p>
-
-  <section class="wrap results" id="results" aria-labelledby="pageTitle">
-    <div class="grid" id="grid"></div>
-    <div class="map-wrap" id="mapWrap" hidden><div class="map" id="map"></div></div>
-  </section>
-
-  <section class="closing wrap" id="contacto" aria-labelledby="closingTitle">
-    <h2 id="closingTitle">¿Buscas algo en particular?</h2>
-    <p>Cuéntanos qué buscas, para comprar o para una temporada, y te proponemos la casa.</p>
-    <a class="btn btn-solid" id="closingWa" target="_blank" rel="noopener" href="#">Escríbenos por WhatsApp</a>
-  </section>
-</main>
-
-<button class="map-fab" id="mapFab" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Zm0 0v14m6-12v14"/></svg><span>Ver mapa</span></button>
-
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
-  <div class="sheet-panel" id="sheetPanel"></div>
+  <div class="split" id="split">
+    <section class="results" aria-labelledby="resultsTitle">
+      <div class="results-head">
+        <div>
+          <h1 id="resultsTitle">Residencias en venta en la Costa Azul</h1>
+          <p class="count" id="resultCount" aria-live="polite"></p>
+        </div>
+        <label class="sort">Ordenar por
+          <select id="sort">
+            <option value="recomendadas">Mejor precio vs. su zona</option>
+            <option value="recientes">Más recientes</option>
+            <option value="precio-asc">Precio: menor a mayor</option>
+            <option value="precio-desc">Precio: mayor a menor</option>
+            <option value="m2-asc">Precio por m²: menor</option>
+            <option value="superficie-desc">Más superficie</option>
+          </select>
+        </label>
+      </div>
+      <div class="chips" id="activeChips"></div>
+      <div class="cards" id="cards"></div>
+      <div class="center"><button class="btn btn-ghost" id="loadMore" hidden></button></div>
+    </section>
+    <aside class="map-col" aria-label="Mapa de propiedades">
+      <div class="map" id="map"></div>
+      <label class="map-sync"><input type="checkbox" id="mapSync"> Buscar mientras muevo el mapa</label>
+    </aside>
+  </div>
+  <button class="map-toggle" id="mapToggle" type="button" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Zm0 0v14m6-12v14"/></svg>
+    <span>Mapa</span>
+  </button>
 </div>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotos" hidden>
-  <div class="lb-top"><p id="lbCount"></p><button class="icon-btn light" id="lbClose" aria-label="Cerrar fotos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+</main>
+
+<!-- =================== FICHA (overlay) =================== -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="sheet-panel" id="sheetPanel" tabindex="-1"></div>
+</div>
+
+<!-- =================== GALERÍA (lightbox) =================== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galería de fotos" hidden>
+  <div class="lb-top">
+    <p class="lb-count" id="lbCount"></p>
+    <button class="icon-btn light" id="lbClose" aria-label="Cerrar galería"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
   <figure class="lb-stage"><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
   <button class="lb-nav prev" id="lbPrev" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
   <button class="lb-nav next" id="lbNext" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
@@ -100,9 +276,17 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-<footer class="site-footer wrap">
-  <p class="fine" id="fxNote"></p>
-  <p class="fine">Azur es un proyecto académico: casas, tarifas y contactos son ilustrativos. Fotos: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>. Mapa: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>.</p>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="#inicio"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8 15.5 16 9l8 6.5V24h-5.5v-5h-5v5H8z"/></svg><span>Home Finder <em>Exclusive</em></span></a>
+      <p>Residencias en la Costa Azul con el precio en contexto.</p>
+    </div>
+    <div>
+      <p class="fine" id="fxNote">Tipo de cambio: cargando…</p>
+      <p class="fine">Proyecto académico. Propiedades, precios y contactos son ilustrativos; las fotos son de <a href="https://unsplash.com" rel="noopener" target="_blank">Unsplash</a> y no corresponden a los inmuebles. Mapa © <a href="https://www.openstreetmap.org/copyright" rel="noopener" target="_blank">colaboradores de OpenStreetMap</a>.</p>
+    </div>
+  </div>
 </footer>
 
 <script src="js/price-tags.js"></script>
