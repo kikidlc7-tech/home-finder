@@ -129,7 +129,7 @@
 
   /* imágenes rotas (foto no disponible / sin red / CSP): reemplazo neutro */
   var PLACEHOLDER = "data:image/svg+xml," + encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22344A"/><stop offset="1" stop-color="#0B1B2E"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/><path d="M150 170 200 128l50 42v52h-34v-32h-32v32h-34z" fill="none" stroke="#E0218A" stroke-width="6" stroke-linejoin="round"/><text x="200" y="262" fill="#B8C4D3" font-family="sans-serif" font-size="16" text-anchor="middle">Foto no disponible</text></svg>');
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22344A"/><stop offset="1" stop-color="#0B1B2E"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/><path d="M150 170 200 128l50 42v52h-34v-32h-32v32h-34z" fill="none" stroke="#2E5BD8" stroke-width="6" stroke-linejoin="round"/><text x="200" y="262" fill="#B8C4D3" font-family="sans-serif" font-size="16" text-anchor="middle">Foto no disponible</text></svg>');
   document.addEventListener("error", function (ev) {
     var t = ev.target;
     if (t && t.tagName === "IMG" && t.src !== PLACEHOLDER && !t.classList.contains("leaflet-tile")) { t.removeAttribute("srcset"); t.src = PLACEHOLDER; }
@@ -620,7 +620,7 @@
       if (!document.body.contains(el)) return;
       var m = L.map(el, { scrollWheelZoom: false, zoomControl: true }).setView([p.lat, p.lng], 14);
       tileLayer(L, m, function () { el.innerHTML = '<div class="map-fallback">No se pudo cargar el mapa. Usa “Abrir en Google Maps”.</div>'; });
-      L.circle([p.lat, p.lng], { radius: 350, color: "#E0218A", weight: 2, fillColor: "#E0218A", fillOpacity: .15 }).addTo(m);
+      L.circle([p.lat, p.lng], { radius: 350, color: "#2E5BD8", weight: 2, fillColor: "#2E5BD8", fillOpacity: .15 }).addTo(m);
       L.marker([p.lat, p.lng], { icon: pinIcon(L, p), keyboard: false }).addTo(m);
       S.miniMap = m;
     }).catch(function () { el.innerHTML = '<div class="map-fallback">No se pudo cargar el mapa. Usa “Abrir en Google Maps”.</div>'; });

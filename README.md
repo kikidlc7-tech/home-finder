@@ -37,7 +37,7 @@ Deploy en Vercel: Framework **Other**, sin Build Command ni Output Directory. Lo
 
 ```
 index.html            vistas: #inicio (landing), #buscar, #guardadas, #propiedad-N (ficha)
-css/styles.css        diseño (Instrument Serif + Geist; tinta mediterránea + buganvilia)
+css/styles.css        diseño (Instrument Serif + Geist; tinta mediterránea + azul marino)
 js/price-tags.js      función del A2 (O(n)), sin dependencias, probada en node
 js/finance.js         hipoteca y conversión de moneda
 js/app.js             interfaz, rutas, filtros, mapa, ficha, formulario

@@ -1,6 +1,6 @@
 /* =========================================================
    Home Finder Exclusive — estilos
-   Paleta: tinta mediterránea (azul noche) + buganvilia (marca)
+   Paleta: tinta mediterránea (azul noche) + azul marino (marca)
    Tipos: Instrument Serif (titulares) · Geist (interfaz)
    ========================================================= */
 :root {
@@ -12,10 +12,10 @@
   --line: #DDE3EA;
   --line-strong: #B9C3CF;
   --muted: #546273;
-  --brand: #E0218A;          /* decorativo: marca, pines, acentos */
-  --brand-btn: #C8177A;      /* fondo de botones: 5.4:1 con blanco */
-  --brand-ink: #B0126A;      /* texto de marca sobre claro: 6.2:1 */
-  --brand-tint: #FCE4F1;
+  --brand: #2E5BD8;          /* decorativo: marca, pines, acentos */
+  --brand-btn: #1F3F99;      /* azul marino: fondo de botones */
+  --brand-ink: #1A3685;      /* azul marino: texto de marca sobre claro */
+  --brand-tint: #E4EBFB;
   --op: #0A7F73;  --op-ink: #0A6B61;  --op-tint: #DDF3F0;
   --hi: #C2410C;  --hi-ink: #A33A0B;  --hi-tint: #FDE8DC;
   --ok: #46566A;  --ok-ink: #3E4C5E;  --ok-tint: #E8EDF3;
@@ -82,7 +82,7 @@ body.on-landing .site.is-top { background: transparent; border-color: transparen
 .site-inner { height: 100%; max-width: 1440px; margin-inline: auto; padding-inline: clamp(16px, 3vw, 32px); display: flex; align-items: center; gap: 24px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; letter-spacing: -.01em; white-space: nowrap; }
 .brand em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.2em; color: var(--brand); }
-.site.is-top .brand em { color: #FF6DB7; }
+.site.is-top .brand em { color: #9DB8FF; }
 .brand-mark { width: 30px; height: 30px; }
 .brand-mark rect { fill: var(--ink); }
 .brand-mark path { fill: var(--brand); }
@@ -246,9 +246,9 @@ body.on-landing .site { margin-bottom: calc(-1 * var(--header-h)); }
 .pill b { font-weight: 600; color: var(--brand-ink); }
 .pill b:empty { display: none; }
 .pill.is-active, .pill[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
-.pill.is-active b, .pill[aria-pressed="true"] b { color: #FFB3DA; }
+.pill.is-active b, .pill[aria-pressed="true"] b { color: #C3D3FF; }
 .pill svg { width: 16px; height: 16px; fill: var(--brand); }
-.pill[aria-pressed="true"] svg { fill: #FF6DB7; }
+.pill[aria-pressed="true"] svg { fill: #9DB8FF; }
 .pill-reset { border-style: dashed; }
 .pop {
   position: fixed; z-index: 60; min-width: 260px; max-width: calc(100vw - 24px);
@@ -381,7 +381,7 @@ body.no-scroll { overflow: hidden; }
 .facts dd { margin: 2px 0 0; font-weight: 600; }
 .amen { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 20px; list-style: none; padding: 0; margin: 0; }
 .amen li { display: flex; gap: 10px; align-items: center; }
-.amen li::before { content: ""; width: 18px; height: 18px; flex-shrink: 0; border-radius: 50%; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B0126A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center / 12px no-repeat; }
+.amen li::before { content: ""; width: 18px; height: 18px; flex-shrink: 0; border-radius: 50%; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A3685' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center / 12px no-repeat; }
 .analysis { border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; display: grid; gap: 16px; }
 .analysis-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .analysis-head p { font-size: 1.05rem; }
@@ -513,3 +513,8 @@ body.no-scroll { overflow: hidden; }
   .site .brand span { font-size: .9rem; }
 }
 @media (max-width: 360px) { .site .brand-mark { display: none; } }
+
+.brand-mark path { fill: #8FB0FF; }
+.site.is-top .brand-mark rect { fill: #fff; }
+.site.is-top .brand-mark path { fill: var(--brand-btn); }
+.bar.is-self .bar-fill { background: #6E95FF; }
