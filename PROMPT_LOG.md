@@ -75,6 +75,8 @@ _(Opcional: más casos de prueba)_
 
 ## Uso de IA
 
-✍️ Herramienta(s):
-✍️ Para qué la usé:
-✍️ Qué decidí o verifiqué yo:
+**Herramientas:** Claude (claude.ai, con agentes y navegador) para construir, auditar y desplegar; Claude in Chrome para crear el repo y el proyecto en Vercel; GitHub y Vercel para alojar el código y el deploy.
+
+**Para qué la usé:** construir la función de etiquetas de precio (`js/price-tags.js`) y el cotizador de renta (`js/finance.js`); auditar la app con 3 agentes independientes (diseño, flujos, accesibilidad/seguridad/escalabilidad: `docs/revision/`); rediseñar la interfaz; escribir pruebas (`tests/`); preparar el deploy y esta documentación.
+
+✍️ **Qué decidí o verifiqué yo:** _(esto lo escribes tú: qué propuestas aceptaste, rechazaste o cambiaste y qué comprobaste por tu cuenta)_

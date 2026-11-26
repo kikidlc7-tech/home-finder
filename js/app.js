@@ -135,13 +135,21 @@
 
   function pintarPortada() {
     var p = destacada(), f = p.fotos[0];
+    var mejor = S.props.filter(function (x) { return S.tags[x.id].etiqueta === "Buena oportunidad"; })
+      .sort(function (a, b) { return S.tags[a.id].diferenciaPct - S.tags[b.id].diferenciaPct; })[0];
+    var opc = S.zonas.map(function (z) { return '<option value="' + esc(z) + '"' + (S.zona === z ? " selected" : "") + ">" + esc(z) + "</option>"; }).join("");
     $("#cover").innerHTML =
       '<img src="' + img(f.id, 1600) + '" srcset="' + srcset(f.id, [1000, 1600, 2400]) + '" sizes="100vw" alt="' + esc(f.alt) + '" fetchpriority="high">' +
-      '<div class="cover-inner wrap"><div>' +
-        '<p class="cover-kicker">' + esc(p.comuna) + "</p>" +
-        "<h1>" + esc(p.titulo) + "</h1>" +
-        '<p class="cover-meta">' + (esRenta() ? "Desde " + money(noche(p, "baja"), true) + " por noche" : money(p.precio, true)) + " · " + esc(specsTexto(p)) + "</p>" +
-      '</div><a class="btn btn-light" href="#propiedad-' + p.id + '">Ver la villa</a></div>';
+      '<div class="cover-inner wrap"><div class="cover-copy">' +
+        "<h1>La Costa Azul, con el precio en contexto.</h1>" +
+        '<p class="cover-sub">Villas entre Saint-Tropez y Mónaco, en venta y en renta. Cada ficha compara su valor por m² con las casas de su zona.</p>' +
+        '<form class="hero-search" id="heroSearch" role="search">' +
+          '<label class="hs-field"><span>Dónde</span><select id="heroZona"><option value="">Toda la Costa Azul</option>' + opc + "</select></label>" +
+          '<label class="hs-field"><span>Quiero</span><select id="heroOp"><option value="comprar"' + (esRenta() ? "" : " selected") + '>Comprar</option><option value="rentar"' + (esRenta() ? " selected" : "") + ">Rentar</option></select></label>" +
+          '<button class="btn btn-solid" type="submit">Buscar villas</button>' +
+        "</form></div>" +
+        (mejor ? '<a class="hero-proof" href="#propiedad-' + mejor.id + '"><img src="' + img(mejor.fotos[0].id, 200) + '" alt=""><span><strong>' + esc(mejor.titulo) + "</strong><small>" + (esRenta() ? "Desde " + money(noche(mejor, "baja"), true) + " por noche" : money(mejor.precio, true)) + " · " + esc(mejor.comuna) + "</small>" + tagHTML(mejor) + "</span></a>" : "") +
+      "</div>";
   }
 
   var ORDEN = {
@@ -597,6 +605,22 @@
       }
     });
     $("#mapFab").addEventListener("click", function () { cambiarModo(enMapa() ? "lista" : "mapa"); });
+    document.addEventListener("submit", function (ev) {
+      if (ev.target.id !== "heroSearch") return;
+      ev.preventDefault();
+      S.zona = $("#heroZona").value; S.area = null; pintarZonas();
+      cambiarOp($("#heroOp").value);
+      $("#coleccion").scrollIntoView({ behavior: "smooth" });
+    });
+    document.addEventListener("click", function (ev) {
+      var g = ev.target.closest("[data-go]"); if (!g) return;
+      ev.preventDefault();
+      if (g.dataset.go === "mapa") cambiarModo("mapa");
+      var dest = document.getElementById(g.dataset.go === "mapa" ? "results" : g.dataset.go);
+      if (dest) dest.scrollIntoView({ behavior: "smooth" });
+    });
+    var arriba = function () { document.body.classList.toggle("at-top", window.scrollY < 40 && !S.soloGuardadas); };
+    window.addEventListener("scroll", arriba, { passive: true }); arriba();
     $("#lbClose").addEventListener("click", cerrarGaleria);
     $("#lbPrev").addEventListener("click", function () { pasoLb(-1); });
     $("#lbNext").addEventListener("click", function () { pasoLb(1); });

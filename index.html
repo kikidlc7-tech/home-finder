@@ -25,6 +25,11 @@
       <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 19a7 7 0 0 1 14 0"/><path d="M4 19h24M8 23h16M12 27h8"/></svg>
       <span class="wordmark">Azur</span>
     </a>
+    <nav class="main-nav" aria-label="Principal">
+      <a href="#coleccion" data-go="coleccion">Villas</a>
+      <a href="#coleccion" data-go="mapa">Mapa</a>
+      <a href="#contacto" data-go="contacto">Contacto</a>
+    </nav>
     <div class="header-tools">
       <label class="currency"><span class="sr-only">Moneda</span>
         <select id="currency"><option>MXN</option><option>EUR</option><option>USD</option></select>
@@ -73,7 +78,7 @@
     <div class="map-wrap" id="mapWrap" hidden><div class="map" id="map"></div></div>
   </section>
 
-  <section class="closing wrap" aria-labelledby="closingTitle">
+  <section class="closing wrap" id="contacto" aria-labelledby="closingTitle">
     <h2 id="closingTitle">¿Buscas algo en particular?</h2>
     <p>Cuéntanos qué buscas, para comprar o para una temporada, y te proponemos la casa.</p>
     <a class="btn btn-solid" id="closingWa" target="_blank" rel="noopener" href="#">Escríbenos por WhatsApp</a>
