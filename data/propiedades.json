@@ -1,0 +1,1153 @@
+{
+ "version": 3,
+ "moneda": "EUR",
+ "tipoCambioRespaldo": {
+  "EUR_MXN": 21.52,
+  "EUR_USD": 1.096,
+  "fecha": "2026-11-26",
+  "fuente": "Frankfurter (BCE); se usa solo si la API no responde"
+ },
+ "nota": "Catálogo ilustrativo para un proyecto académico. Propiedades, precios y datos de contacto no son reales; las fotos (Unsplash) son ilustrativas.",
+ "propiedades": [
+  {
+   "id": 1,
+   "titulo": "Villa Belle Époque en Saint-Jean-Cap-Ferrat",
+   "tipo": "Casa",
+   "estado": "Exclusiva",
+   "precio": 14500000,
+   "zona": "Cap Ferrat",
+   "comuna": "Saint-Jean-Cap-Ferrat",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.684,
+   "lng": 7.33,
+   "m2": 480,
+   "terreno": 2200,
+   "recamaras": 6,
+   "banos": 6,
+   "mediosBanos": 1,
+   "estacionamientos": 4,
+   "niveles": 3,
+   "anio": 1908,
+   "gastos": 0,
+   "vista": "Bahía de Villefranche",
+   "distanciaMar": 150,
+   "distanciaAeropuerto": 17,
+   "seguridad": "Portón, cámaras y caseta de guardia",
+   "amenidades": [
+    "Alberca climatizada",
+    "Jardín mediterráneo",
+    "Casa de huéspedes",
+    "Cava",
+    "Elevador",
+    "Orangerie"
+   ],
+   "destacados": [
+    "Fachada Belle Époque restaurada en 2022",
+    "Jardín de 2,200 m² con olivos centenarios",
+    "A 150 m del sendero costero"
+   ],
+   "descripcion": "Villa de 1908 restaurada con respeto a su fachada original, molduras y pisos de mármol. La planta principal abre a terrazas con vista a la bahía de Villefranche. El jardín escalonado integra alberca climatizada, una orangerie y una casa de huéspedes independiente.",
+   "publicado": "2026-11-18",
+   "fotos": [
+    {
+     "id": "1763226950354-b04f6101acd1",
+     "autor": "Philippe BONTEMPS",
+     "alt": "Mansión rosa con jardines"
+    },
+    {
+     "id": "1763225987218-899c870af98a",
+     "autor": "Philippe BONTEMPS",
+     "alt": "Fuente frente a la fachada rosa"
+    },
+    {
+     "id": "1771148157764-534bc7a66c21",
+     "autor": "Kevin Reyes",
+     "alt": "Vestíbulo con escalera y candiles"
+    },
+    {
+     "id": "1613082294483-fec382d8367e",
+     "autor": "Lotus Design N Print",
+     "alt": "Comedor principal"
+    },
+    {
+     "id": "1560185893-a55cbc8c57e8",
+     "autor": "Francesca Tosolini",
+     "alt": "Recámara principal"
+    },
+    {
+     "id": "1507652313519-d4e9174996dd",
+     "autor": "Jared Rice",
+     "alt": "Tina exenta"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "titulo": "Villa contemporánea con alberca infinita en Villefranche-sur-Mer",
+   "tipo": "Casa",
+   "estado": "Nueva",
+   "precio": 5900000,
+   "zona": "Cap Ferrat",
+   "comuna": "Villefranche-sur-Mer",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.704,
+   "lng": 7.311,
+   "m2": 320,
+   "terreno": 1100,
+   "recamaras": 4,
+   "banos": 4,
+   "mediosBanos": 1,
+   "estacionamientos": 2,
+   "niveles": 2,
+   "anio": 2025,
+   "gastos": 0,
+   "vista": "Rada de Villefranche",
+   "distanciaMar": 400,
+   "distanciaAeropuerto": 14,
+   "seguridad": "Alarma y cámaras conectadas",
+   "amenidades": [
+    "Alberca infinita",
+    "Domótica",
+    "Bomba de calor",
+    "Cocina exterior",
+    "Cargador para auto eléctrico"
+   ],
+   "destacados": [
+    "Construcción nueva, entrega inmediata",
+    "Alberca infinita orientada al sur",
+    "Eficiencia energética clase A"
+   ],
+   "descripcion": "Villa nueva de líneas limpias en la ladera de Villefranche, con ventanales correderos que unen la estancia con la terraza y la alberca infinita. Cuatro recámaras en suite, domótica completa y cocina exterior con vista a la rada.",
+   "publicado": "2026-11-22",
+   "fotos": [
+    {
+     "id": "1741850419928-aa65b3d5e3a6",
+     "autor": "Angelina and Antonis",
+     "alt": "Villa de lujo con alberca en un día soleado"
+    },
+    {
+     "id": "1758192838598-a1de4da5dcaf",
+     "autor": "Aalo Lens",
+     "alt": "Alberca infinita al atardecer con palmeras"
+    },
+    {
+     "id": "1613545325268-9265e1609167",
+     "autor": "Zac Gudakov",
+     "alt": "Sala con ventanal de piso a techo"
+    },
+    {
+     "id": "1785535573585-8f962fa3cda5",
+     "autor": "Franco Debartolo",
+     "alt": "Cocina con isla de mármol"
+    },
+    {
+     "id": "1765862835260-47843a7bba45",
+     "autor": "Puscas Adryan",
+     "alt": "Recámara minimalista"
+    },
+    {
+     "id": "1765745518673-b562b7304a53",
+     "autor": "Puscas Adryan",
+     "alt": "Baño de mármol y madera"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "titulo": "Penthouse frente al mar en Beaulieu-sur-Mer",
+   "tipo": "Departamento",
+   "estado": "En venta",
+   "precio": 4200000,
+   "zona": "Cap Ferrat",
+   "comuna": "Beaulieu-sur-Mer",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.707,
+   "lng": 7.333,
+   "m2": 165,
+   "recamaras": 3,
+   "banos": 3,
+   "estacionamientos": 2,
+   "niveles": 1,
+   "anio": 2008,
+   "gastos": 1450,
+   "vista": "Mar Mediterráneo y Cap Ferrat",
+   "distanciaMar": 50,
+   "distanciaAeropuerto": 16,
+   "seguridad": "Conserje y acceso controlado",
+   "amenidades": [
+    "Terraza de 90 m²",
+    "Alberca del edificio",
+    "Bodega",
+    "Elevador",
+    "Puerto deportivo a 200 m"
+   ],
+   "destacados": [
+    "Primera línea de mar",
+    "Terraza envolvente de 90 m²",
+    "A 200 m del puerto deportivo"
+   ],
+   "descripcion": "Penthouse en primera línea de mar con terraza envolvente hacia Cap Ferrat. Estancia luminosa, cocina abierta y tres recámaras. El edificio tiene alberca, conserje y dos lugares de estacionamiento.",
+   "publicado": "2026-11-01",
+   "fotos": [
+    {
+     "id": "1629199159634-28a88785cee5",
+     "autor": "Denis DIMITROV",
+     "alt": "Edificio frente al mar"
+    },
+    {
+     "id": "1757524503555-b62633f47670",
+     "autor": "Michael Brown",
+     "alt": "Sala con chimenea y ventanales"
+    },
+    {
+     "id": "1507089947368-19c1da9775ae",
+     "autor": "Aaron Huber",
+     "alt": "Cocina blanca con isla"
+    },
+    {
+     "id": "1616594039964-ae9021a400a0",
+     "autor": "Spacejoy",
+     "alt": "Recámara principal con vista a la ciudad"
+    },
+    {
+     "id": "1584622650111-993a426fbf0a",
+     "autor": "Lotus Design N Print",
+     "alt": "Baño con regadera y doble lavabo"
+    }
+   ],
+   "terreno": 0,
+   "mediosBanos": 0
+  },
+  {
+   "id": 4,
+   "titulo": "Villa provenzal con jardín en Saint-Jean-Cap-Ferrat",
+   "tipo": "Casa",
+   "estado": "En venta",
+   "precio": 9800000,
+   "zona": "Cap Ferrat",
+   "comuna": "Saint-Jean-Cap-Ferrat",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.69,
+   "lng": 7.336,
+   "m2": 410,
+   "terreno": 1800,
+   "recamaras": 5,
+   "banos": 5,
+   "mediosBanos": 1,
+   "estacionamientos": 3,
+   "niveles": 2,
+   "anio": 1962,
+   "gastos": 0,
+   "vista": "Jardín y mar entre pinos",
+   "distanciaMar": 300,
+   "distanciaAeropuerto": 18,
+   "seguridad": "Portón eléctrico y alarma",
+   "amenidades": [
+    "Alberca",
+    "Estanque",
+    "Pool house",
+    "Jardín de 1,800 m²",
+    "Asador"
+   ],
+   "destacados": [
+    "Calle tranquila de la península",
+    "Pool house con cocina",
+    "Jardín con estanque"
+   ],
+   "descripcion": "Villa de estilo provenzal en una calle tranquila de la península, rodeada de pinos y buganvilias. Estancia con chimenea, comedor que abre a la terraza y cinco recámaras. El jardín incluye alberca, estanque y pool house con cocina.",
+   "publicado": "2026-10-20",
+   "fotos": [
+    {
+     "id": "1716807335226-dfe1e2062db1",
+     "autor": "Hugo Richard",
+     "alt": "Villa rosa con estanque en el jardín"
+    },
+    {
+     "id": "1716807335095-8948ce6ab482",
+     "autor": "Hugo Richard",
+     "alt": "Villa con alberca central"
+    },
+    {
+     "id": "1598928506311-c55ded91a20c",
+     "autor": "Lotus Design N Print",
+     "alt": "Sala con chimenea de mármol"
+    },
+    {
+     "id": "1600489000022-c2086d79f9d4",
+     "autor": "Collov Home Design",
+     "alt": "Cocina en blanco y madera"
+    },
+    {
+     "id": "1768487422639-7ba3900d0f02",
+     "autor": "Clay Banks",
+     "alt": "Recámara con chimenea"
+    },
+    {
+     "id": "1758026164848-0a9fb178c070",
+     "autor": "Maurits Bausenhart",
+     "alt": "Terraza con alberca y sombrillas"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "titulo": "Villa con vista a las islas de Lérins en Cannes Californie",
+   "tipo": "Casa",
+   "estado": "Exclusiva",
+   "precio": 12000000,
+   "zona": "Cannes",
+   "comuna": "Cannes",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.556,
+   "lng": 7.039,
+   "m2": 650,
+   "terreno": 3000,
+   "recamaras": 7,
+   "banos": 7,
+   "mediosBanos": 2,
+   "estacionamientos": 6,
+   "niveles": 3,
+   "anio": 1995,
+   "gastos": 0,
+   "vista": "Islas de Lérins y bahía de Cannes",
+   "distanciaMar": 900,
+   "distanciaAeropuerto": 27,
+   "seguridad": "Dominio privado con guardia 24 h",
+   "amenidades": [
+    "Alberca infinita",
+    "Spa con hammam",
+    "Gimnasio",
+    "Cine",
+    "Departamento de servicio",
+    "Helipuerto cercano"
+   ],
+   "destacados": [
+    "Vista panorámica a las islas de Lérins",
+    "Spa con hammam y gimnasio",
+    "Dominio privado con guardia"
+   ],
+   "descripcion": "Villa en un dominio privado de la colina de Californie, con vista panorámica a la bahía de Cannes y a las islas de Lérins. Siete recámaras, spa con hammam, cine y una alberca infinita sobre la terraza principal.",
+   "publicado": "2026-11-12",
+   "fotos": [
+    {
+     "id": "1673403731036-30ef7a4995f5",
+     "autor": "Giulia Squillace",
+     "alt": "Villa blanca sobre una colina arbolada"
+    },
+    {
+     "id": "1564501049412-61c2a3083791",
+     "autor": "Ciudad Maderas",
+     "alt": "Villa con alberca y camastros al atardecer"
+    },
+    {
+     "id": "1757524552833-4dba4949a5b2",
+     "autor": "Michael Brown",
+     "alt": "Estancia con chimenea y piano de cola"
+    },
+    {
+     "id": "1778731660397-6a66493be391",
+     "autor": "Franco Debartolo",
+     "alt": "Cocina con isla y bancos"
+    },
+    {
+     "id": "1778731525620-ae459167c176",
+     "autor": "Franco Debartolo",
+     "alt": "Recámara principal"
+    },
+    {
+     "id": "1771372012124-f7696f374a5a",
+     "autor": "GoodLifeConstruction",
+     "alt": "Baño con tina exenta y doble lavabo"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "titulo": "Bastide del siglo XVIII en Mougins",
+   "tipo": "Casa",
+   "estado": "Precio reducido",
+   "precio": 6400000,
+   "zona": "Cannes",
+   "comuna": "Mougins",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.6,
+   "lng": 6.995,
+   "m2": 520,
+   "terreno": 6000,
+   "recamaras": 6,
+   "banos": 5,
+   "mediosBanos": 1,
+   "estacionamientos": 4,
+   "niveles": 2,
+   "anio": 1780,
+   "gastos": 0,
+   "vista": "Campos de lavanda y colinas",
+   "distanciaMar": 7000,
+   "distanciaAeropuerto": 24,
+   "seguridad": "Portón y cámaras",
+   "amenidades": [
+    "Alberca",
+    "Campo de lavanda",
+    "Olivar",
+    "Cava abovedada",
+    "Cancha de petanca"
+   ],
+   "destacados": [
+    "Bastide de piedra del siglo XVIII",
+    "Terreno de 6,000 m² con olivar",
+    "Precio reducido 7% en octubre"
+   ],
+   "descripcion": "Bastide de piedra restaurada en las colinas de Mougins, con vigas originales, chimeneas y una cava abovedada. Los 6,000 m² de terreno incluyen olivar, campo de lavanda, alberca y cancha de petanca.",
+   "publicado": "2026-10-02",
+   "fotos": [
+    {
+     "id": "1689275232185-957a6dbae87b",
+     "autor": "Emma HONG",
+     "alt": "Campo de lavanda frente a la casa"
+    },
+    {
+     "id": "1645355395895-2391c48c0071",
+     "autor": "Finn IJspeert",
+     "alt": "Fachada provenzal con árbol"
+    },
+    {
+     "id": "1502005229762-cf1b2da7c5d6",
+     "autor": "Jason Briscoe",
+     "alt": "Escalera de madera"
+    },
+    {
+     "id": "1683629357963-adf2b1fa9ad9",
+     "autor": "Brian Zajac",
+     "alt": "Cocina con cubierta de mármol"
+    },
+    {
+     "id": "1562438668-bcf0ca6578f0",
+     "autor": "刘 强",
+     "alt": "Recámara principal"
+    },
+    {
+     "id": "1631889993959-41b4e9c6e3c5",
+     "autor": "Backbone",
+     "alt": "Baño completo con tina"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "titulo": "Departamento sobre La Croisette",
+   "tipo": "Departamento",
+   "estado": "En venta",
+   "precio": 3300000,
+   "zona": "Cannes",
+   "comuna": "Cannes",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.548,
+   "lng": 7.027,
+   "m2": 190,
+   "recamaras": 3,
+   "banos": 3,
+   "estacionamientos": 1,
+   "niveles": 1,
+   "anio": 1930,
+   "gastos": 1200,
+   "vista": "Bahía de Cannes",
+   "distanciaMar": 40,
+   "distanciaAeropuerto": 26,
+   "seguridad": "Conserje 24 h",
+   "amenidades": [
+    "Balcón frente al mar",
+    "Conserje",
+    "Elevador",
+    "Bodega"
+   ],
+   "destacados": [
+    "Sobre el bulevar de La Croisette",
+    "Balcón con vista a la bahía",
+    "Edificio Art Déco de 1930"
+   ],
+   "descripcion": "Departamento en un edificio Art Déco sobre La Croisette, con balcón corrido frente a la bahía. Techos de 3.4 m, pisos de parqué y tres recámaras, a pasos del Palais des Festivals.",
+   "publicado": "2026-11-05",
+   "fotos": [
+    {
+     "id": "1604497853140-526ff6807f02",
+     "autor": "Jac Alexandru",
+     "alt": "Fachada frente al puerto"
+    },
+    {
+     "id": "1772567732985-6fefa2dff56d",
+     "autor": "Franco Debartolo",
+     "alt": "Sala con chimenea"
+    },
+    {
+     "id": "1638886043487-72d203fa66b6",
+     "autor": "Lotus Design N Print",
+     "alt": "Cocina con isla central"
+    },
+    {
+     "id": "1566665797739-1674de7a421a",
+     "autor": "mark champs",
+     "alt": "Recámara con cabecera tapizada"
+    },
+    {
+     "id": "1611095210561-67f0832b1ca3",
+     "autor": "Lotus Design N Print",
+     "alt": "Antecomedor"
+    }
+   ],
+   "terreno": 0,
+   "mediosBanos": 0
+  },
+  {
+   "id": 8,
+   "titulo": "Villa frente al mar en Cap d'Antibes",
+   "tipo": "Casa",
+   "estado": "Exclusiva",
+   "precio": 18500000,
+   "zona": "Antibes",
+   "comuna": "Antibes",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.548,
+   "lng": 7.122,
+   "m2": 600,
+   "terreno": 2500,
+   "recamaras": 7,
+   "banos": 7,
+   "mediosBanos": 1,
+   "estacionamientos": 5,
+   "niveles": 3,
+   "anio": 2016,
+   "gastos": 0,
+   "vista": "Mar Mediterráneo, acceso directo",
+   "distanciaMar": 0,
+   "distanciaAeropuerto": 22,
+   "seguridad": "Portón, guardia y sistema perimetral",
+   "amenidades": [
+    "Acceso directo al mar",
+    "Embarcadero",
+    "Alberca infinita",
+    "Spa",
+    "Gimnasio",
+    "Casa de huéspedes"
+   ],
+   "destacados": [
+    "Acceso directo al mar con embarcadero",
+    "Alberca infinita sobre las rocas",
+    "Casa de huéspedes independiente"
+   ],
+   "descripcion": "Villa contemporánea con los pies en el agua en la costa oeste de Cap d'Antibes. Embarcadero privado, alberca infinita sobre las rocas y terrazas en tres niveles. Siete recámaras, spa, gimnasio y casa de huéspedes independiente.",
+   "publicado": "2026-11-20",
+   "fotos": [
+    {
+     "id": "1788625470814-bc1606693f60",
+     "autor": "Jonathan Phelps",
+     "alt": "Casa sobre acantilado frente a mar turquesa"
+    },
+    {
+     "id": "1772064901616-00264a6c4104",
+     "autor": "Jeffrey Eisen",
+     "alt": "Alberca infinita frente al océano"
+    },
+    {
+     "id": "1613977257363-707ba9348227",
+     "autor": "John Fornander",
+     "alt": "Villa blanca con alberca y terraza"
+    },
+    {
+     "id": "1600210491892-03d54c0aaf87",
+     "autor": "Collov Home Design",
+     "alt": "Sala con chimenea"
+    },
+    {
+     "id": "1556911220-bff31c812dba",
+     "autor": "Jason Briscoe",
+     "alt": "Cocina blanca con isla de mármol"
+    },
+    {
+     "id": "1758448755969-8791367cf5c5",
+     "autor": "Aalo Lens",
+     "alt": "Recámara con ventanales"
+    },
+    {
+     "id": "1733426107854-ee00a25d72a7",
+     "autor": "Murad Kerimli",
+     "alt": "Baño con tina y ventanal"
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "titulo": "Villa contemporánea cerca de la playa en Juan-les-Pins",
+   "tipo": "Casa",
+   "estado": "En venta",
+   "precio": 6200000,
+   "zona": "Antibes",
+   "comuna": "Juan-les-Pins",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.568,
+   "lng": 7.11,
+   "m2": 340,
+   "terreno": 1200,
+   "recamaras": 5,
+   "banos": 5,
+   "estacionamientos": 3,
+   "niveles": 2,
+   "anio": 2018,
+   "gastos": 0,
+   "vista": "Pinar y mar a lo lejos",
+   "distanciaMar": 350,
+   "distanciaAeropuerto": 21,
+   "seguridad": "Alarma y portón eléctrico",
+   "amenidades": [
+    "Alberca",
+    "Terraza techada",
+    "Cocina de verano",
+    "Estudio"
+   ],
+   "destacados": [
+    "A 350 m de las playas de arena",
+    "Cocina de verano junto a la alberca",
+    "Estudio independiente"
+   ],
+   "descripcion": "Villa de 2018 entre pinos, a cinco minutos a pie de las playas de arena de Juan-les-Pins. Planta abierta, alberca rodeada de terraza de madera y cocina de verano. Cinco recámaras y estudio independiente.",
+   "publicado": "2026-10-28",
+   "fotos": [
+    {
+     "id": "1622015663319-e97e697503ee",
+     "autor": "VJ Von Art",
+     "alt": "Villa blanca bajo cielo despejado"
+    },
+    {
+     "id": "1602343168117-bb8ffe3e2e9f",
+     "autor": "Alejandra Cifre González",
+     "alt": "Casa blanca junto a la alberca"
+    },
+    {
+     "id": "1774199496664-a9690967be5a",
+     "autor": "Clay Banks",
+     "alt": "Sala con chimenea y ventanales"
+    },
+    {
+     "id": "1617228069096-4638a7ffc906",
+     "autor": "Cat Han",
+     "alt": "Cocina con isla y ventanal"
+    },
+    {
+     "id": "1616486029423-aaa4789e8c9a",
+     "autor": "Spacejoy",
+     "alt": "Recámara iluminada"
+    }
+   ],
+   "mediosBanos": 0
+  },
+  {
+   "id": 10,
+   "titulo": "Villa con jardín centenario en Cap d'Antibes",
+   "tipo": "Casa",
+   "estado": "En venta",
+   "precio": 8900000,
+   "zona": "Antibes",
+   "comuna": "Antibes",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.556,
+   "lng": 7.13,
+   "m2": 400,
+   "terreno": 2000,
+   "recamaras": 5,
+   "banos": 5,
+   "mediosBanos": 1,
+   "estacionamientos": 3,
+   "niveles": 2,
+   "anio": 1975,
+   "gastos": 0,
+   "vista": "Jardín y mar entre árboles",
+   "distanciaMar": 250,
+   "distanciaAeropuerto": 23,
+   "seguridad": "Portón y cámaras",
+   "amenidades": [
+    "Alberca",
+    "Jardín de 2,000 m²",
+    "Pool house",
+    "Biblioteca"
+   ],
+   "destacados": [
+    "Jardín con pinos y palmeras centenarios",
+    "A 250 m de la playa de La Garoupe",
+    "Biblioteca con chimenea"
+   ],
+   "descripcion": "Villa de los años setenta, renovada, en el corazón de Cap d'Antibes. El jardín de 2,000 m² conserva pinos y palmeras centenarios y rodea una alberca con pool house. Cinco recámaras y biblioteca con chimenea.",
+   "publicado": "2026-09-30",
+   "fotos": [
+    {
+     "id": "1416331108676-a22ccb276e35",
+     "autor": "Vita Vilcina",
+     "alt": "Casa blanca rodeada de árboles"
+    },
+    {
+     "id": "1696087636176-b689cb60b9b1",
+     "autor": "Adam Papp",
+     "alt": "Casa blanca con sendero de piedra"
+    },
+    {
+     "id": "1613545325278-f24b0cae1224",
+     "autor": "Zac Gudakov",
+     "alt": "Sala integrada a doble altura"
+    },
+    {
+     "id": "1628745277862-bc0b2d68c50c",
+     "autor": "Zac Gudakov",
+     "alt": "Cocina con barra"
+    },
+    {
+     "id": "1505693416388-ac5ce068fe85",
+     "autor": "Quilia",
+     "alt": "Recámara con cabecera capitonada"
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "titulo": "Villa en Les Parcs de Saint-Tropez",
+   "tipo": "Casa",
+   "estado": "Exclusiva",
+   "precio": 22000000,
+   "zona": "Saint-Tropez",
+   "comuna": "Saint-Tropez",
+   "departamento": "Var",
+   "lat": 43.266,
+   "lng": 6.65,
+   "m2": 700,
+   "terreno": 8000,
+   "recamaras": 8,
+   "banos": 8,
+   "mediosBanos": 2,
+   "estacionamientos": 6,
+   "niveles": 2,
+   "anio": 2012,
+   "gastos": 2500,
+   "vista": "Golfo de Saint-Tropez",
+   "distanciaMar": 200,
+   "distanciaAeropuerto": 95,
+   "seguridad": "Dominio privado con guardia 24 h",
+   "amenidades": [
+    "Alberca infinita",
+    "Cancha de tenis",
+    "Spa",
+    "Casa de servicio",
+    "Acceso a playa del dominio"
+   ],
+   "destacados": [
+    "En el dominio privado de Les Parcs",
+    "Terreno de 8,000 m²",
+    "Cancha de tenis y spa"
+   ],
+   "descripcion": "Villa en el dominio privado más exclusivo de Saint-Tropez, sobre un terreno de 8,000 m² con vista al golfo. Ocho recámaras, spa, cancha de tenis y alberca infinita, a pocos minutos a pie del puerto.",
+   "publicado": "2026-11-15",
+   "fotos": [
+    {
+     "id": "1582268611958-ebfd161ef9cf",
+     "autor": "Florian Schmidinger",
+     "alt": "Casa con muros de cristal junto a la alberca"
+    },
+    {
+     "id": "1543489822-c49534f3271f",
+     "autor": "big.tiny.belly",
+     "alt": "Vista al mar desde una alberca infinita"
+    },
+    {
+     "id": "1613977257592-4871e5fcd7c4",
+     "autor": "John Fornander",
+     "alt": "Área exterior de descanso junto a la alberca"
+    },
+    {
+     "id": "1773578978637-c9771e7a9913",
+     "autor": "Clay Banks",
+     "alt": "Comedor y sala con grandes ventanales"
+    },
+    {
+     "id": "1769326541248-5e09a8ace25b",
+     "autor": "Puscas Adryan",
+     "alt": "Cocina con isla"
+    },
+    {
+     "id": "1765434670017-c0d28ecde29a",
+     "autor": "Puscas Adryan",
+     "alt": "Recámara con libreros"
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "titulo": "Mas provenzal con viñedo en Ramatuelle",
+   "tipo": "Casa",
+   "estado": "En venta",
+   "precio": 7500000,
+   "zona": "Saint-Tropez",
+   "comuna": "Ramatuelle",
+   "departamento": "Var",
+   "lat": 43.216,
+   "lng": 6.611,
+   "m2": 450,
+   "terreno": 12000,
+   "recamaras": 6,
+   "banos": 6,
+   "estacionamientos": 4,
+   "niveles": 2,
+   "anio": 1850,
+   "gastos": 0,
+   "vista": "Viñedos y mar a lo lejos",
+   "distanciaMar": 1800,
+   "distanciaAeropuerto": 98,
+   "seguridad": "Portón y alarma",
+   "amenidades": [
+    "Viñedo propio",
+    "Alberca",
+    "Cava",
+    "Pérgola",
+    "Huerto"
+   ],
+   "destacados": [
+    "Viñedo propio en 1.2 hectáreas",
+    "Mas de piedra de 1850 restaurado",
+    "A 1.8 km de la playa de Pampelonne"
+   ],
+   "descripcion": "Mas de piedra de 1850 rodeado por su propio viñedo, a minutos de la playa de Pampelonne. Contraventanas de color, vigas a la vista, cava, pérgola con parra y alberca entre los viñedos.",
+   "publicado": "2026-10-12",
+   "fotos": [
+    {
+     "id": "1635522936173-b67a2d744816",
+     "autor": "Mike Von",
+     "alt": "Casa de piedra con contraventanas rojas"
+    },
+    {
+     "id": "1694586132874-8376941149b0",
+     "autor": "Debora Molteni",
+     "alt": "Muro de piedra con puerta azul"
+    },
+    {
+     "id": "1558623950-244d61b79621",
+     "autor": "Guillaume de Germain",
+     "alt": "Terraza blanca con plantas"
+    },
+    {
+     "id": "1632829882891-5047ccc421bc",
+     "autor": "Spacejoy",
+     "alt": "Estancia con chimenea"
+    },
+    {
+     "id": "1771372125074-5c7c4332095f",
+     "autor": "GoodLifeConstruction",
+     "alt": "Cocina con isla"
+    },
+    {
+     "id": "1770941633927-b7a15557e0e1",
+     "autor": "Clay Banks",
+     "alt": "Recámara con área de estar"
+    }
+   ],
+   "mediosBanos": 0
+  },
+  {
+   "id": 13,
+   "titulo": "Villa con vista al golfo en Gassin",
+   "tipo": "Casa",
+   "estado": "Precio reducido",
+   "precio": 6100000,
+   "zona": "Saint-Tropez",
+   "comuna": "Gassin",
+   "departamento": "Var",
+   "lat": 43.229,
+   "lng": 6.585,
+   "m2": 300,
+   "terreno": 2500,
+   "recamaras": 4,
+   "banos": 4,
+   "mediosBanos": 1,
+   "estacionamientos": 2,
+   "niveles": 2,
+   "anio": 2005,
+   "gastos": 0,
+   "vista": "Golfo de Saint-Tropez",
+   "distanciaMar": 2500,
+   "distanciaAeropuerto": 93,
+   "seguridad": "Alarma y portón eléctrico",
+   "amenidades": [
+    "Alberca",
+    "Terrazas",
+    "Jardín de 2,500 m²",
+    "Pool house"
+   ],
+   "destacados": [
+    "Vista panorámica al golfo",
+    "Precio reducido 5% en noviembre",
+    "Terrazas orientadas al este"
+   ],
+   "descripcion": "Villa en las colinas de Gassin con vista panorámica al golfo de Saint-Tropez. Cuatro recámaras en suite, terrazas escalonadas y alberca rodeada de jardín mediterráneo.",
+   "publicado": "2026-11-10",
+   "fotos": [
+    {
+     "id": "1759848915476-11bb5f92f8cd",
+     "autor": "Kamilla Isalieva",
+     "alt": "Villas entre árboles junto al mar"
+    },
+    {
+     "id": "1706808849780-7a04fbac83ef",
+     "autor": "Salman Saqib",
+     "alt": "Terraza con alberca y camastros"
+    },
+    {
+     "id": "1724582586529-62622e50c0b3",
+     "autor": "Prydumano Design",
+     "alt": "Sala con ventanal amplio"
+    },
+    {
+     "id": "1632583824020-937ae9564495",
+     "autor": "Kam Idris",
+     "alt": "Cocina moderna con barra"
+    },
+    {
+     "id": "1578683010236-d716f9a3f461",
+     "autor": "Roberto Nickson",
+     "alt": "Recámara con área de estar"
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "titulo": "Villa sobre el acantilado de Èze con vista a Mónaco",
+   "tipo": "Casa",
+   "estado": "En venta",
+   "precio": 7800000,
+   "zona": "Riviera Este",
+   "comuna": "Èze",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.728,
+   "lng": 7.361,
+   "m2": 380,
+   "terreno": 1500,
+   "recamaras": 5,
+   "banos": 5,
+   "estacionamientos": 3,
+   "niveles": 3,
+   "anio": 2001,
+   "gastos": 0,
+   "vista": "Mar y Mónaco",
+   "distanciaMar": 600,
+   "distanciaAeropuerto": 20,
+   "seguridad": "Portón, cámaras y alarma",
+   "amenidades": [
+    "Alberca",
+    "Terrazas escalonadas",
+    "Gimnasio",
+    "Bodega"
+   ],
+   "destacados": [
+    "Vista directa a Mónaco y al mar",
+    "Terrazas escalonadas sobre el acantilado",
+    "A 10 min de Mónaco"
+   ],
+   "descripcion": "Villa escalonada sobre los acantilados de Èze, con vista al mar y a Mónaco. Terrazas en tres niveles, alberca suspendida y cinco recámaras, a diez minutos en auto del Principado.",
+   "publicado": "2026-11-08",
+   "fotos": [
+    {
+     "id": "1787304680938-2a9d470065c2",
+     "autor": "lennyyx2z",
+     "alt": "Casas con techo de terracota sobre el mar"
+    },
+    {
+     "id": "1782037307641-50058adaa6b4",
+     "autor": "Rich Martello",
+     "alt": "Jardín con vista al pueblo al atardecer"
+    },
+    {
+     "id": "1564078516393-cf04bd966897",
+     "autor": "Roberto Nickson",
+     "alt": "Estancia junto al ventanal"
+    },
+    {
+     "id": "1484154218962-a197022b5858",
+     "autor": "Naomi Hébert",
+     "alt": "Cocina con refrigerador de tres puertas"
+    },
+    {
+     "id": "1772563214602-3c6434766700",
+     "autor": "Elias Storm",
+     "alt": "Recámara con ventanal"
+    }
+   ],
+   "mediosBanos": 0
+  },
+  {
+   "id": 15,
+   "titulo": "Villa junto al mar en Roquebrune-Cap-Martin",
+   "tipo": "Casa",
+   "estado": "En venta",
+   "precio": 6500000,
+   "zona": "Riviera Este",
+   "comuna": "Roquebrune-Cap-Martin",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.758,
+   "lng": 7.474,
+   "m2": 360,
+   "terreno": 1400,
+   "recamaras": 4,
+   "banos": 4,
+   "mediosBanos": 1,
+   "estacionamientos": 2,
+   "niveles": 2,
+   "anio": 1990,
+   "gastos": 0,
+   "vista": "Bahía de Roquebrune",
+   "distanciaMar": 80,
+   "distanciaAeropuerto": 28,
+   "seguridad": "Portón y alarma",
+   "amenidades": [
+    "Alberca",
+    "Acceso al sendero costero",
+    "Jardín",
+    "Terraza"
+   ],
+   "destacados": [
+    "A 80 m del mar",
+    "Acceso al sendero costero Le Corbusier",
+    "Jardín con limoneros"
+   ],
+   "descripcion": "Villa a pocos pasos del mar en Cap Martin, con acceso al sendero costero que bordea la península. Jardín con limoneros, alberca y cuatro recámaras con vista a la bahía de Roquebrune.",
+   "publicado": "2026-10-25",
+   "fotos": [
+    {
+     "id": "1588332550928-558abc4eb4db",
+     "autor": "Michael Kroul",
+     "alt": "Villa junto al agua"
+    },
+    {
+     "id": "1631528858266-5ebeb8bfc6f5",
+     "autor": "Armand Khoury",
+     "alt": "Casa junto al mar con embarcadero"
+    },
+    {
+     "id": "1583847268964-b28dc8f51f92",
+     "autor": "Minh Pham",
+     "alt": "Sala con ventanal"
+    },
+    {
+     "id": "1761810399717-f171e43845a4",
+     "autor": "Benjamin Chambon",
+     "alt": "Alberca en roof garden con vista a la ciudad"
+    },
+    {
+     "id": "1623908112789-c33795afd551",
+     "autor": "Arvydas Baltinas",
+     "alt": "Villa entre árboles"
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "titulo": "Terreno con vista al mar en Èze",
+   "tipo": "Terreno",
+   "estado": "En venta",
+   "precio": 2800000,
+   "zona": "Riviera Este",
+   "comuna": "Èze",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.732,
+   "lng": 7.355,
+   "terreno": 2000,
+   "recamaras": 0,
+   "banos": 0,
+   "estacionamientos": 0,
+   "niveles": 0,
+   "anio": null,
+   "gastos": 0,
+   "vista": "Mar Mediterráneo",
+   "distanciaMar": 900,
+   "distanciaAeropuerto": 19,
+   "seguridad": "Camino privado",
+   "amenidades": [
+    "Permiso de construcción vigente",
+    "Servicios a pie de lote",
+    "Vista al mar"
+   ],
+   "destacados": [
+    "Permiso para 350 m² de construcción",
+    "Vista abierta al mar",
+    "Camino privado"
+   ],
+   "descripcion": "Terreno en ladera con vista abierta al Mediterráneo y permiso de construcción vigente para una villa de 350 m². Servicios a pie de lote y acceso por camino privado.",
+   "publicado": "2026-10-08",
+   "fotos": [
+    {
+     "id": "1718995742144-210fece0874b",
+     "autor": "Karin Kim",
+     "alt": "Terreno con vista desde la loma"
+    },
+    {
+     "id": "1772544152057-c95a2c75a1e4",
+     "autor": "Shalev Cohen",
+     "alt": "Ladera con casas entre árboles"
+    },
+    {
+     "id": "1674164967149-d1c9db1bd9cc",
+     "autor": "Chelsea Essig",
+     "alt": "Vista a la bahía entre pinos"
+    }
+   ],
+   "mediosBanos": 0,
+   "m2": 0
+  },
+  {
+   "id": 17,
+   "titulo": "Terreno edificable en Roquebrune-Cap-Martin",
+   "tipo": "Terreno",
+   "estado": "Precio reducido",
+   "precio": 1900000,
+   "zona": "Riviera Este",
+   "comuna": "Roquebrune-Cap-Martin",
+   "departamento": "Alpes-Maritimes",
+   "lat": 43.762,
+   "lng": 7.46,
+   "terreno": 1600,
+   "recamaras": 0,
+   "banos": 0,
+   "estacionamientos": 0,
+   "niveles": 0,
+   "anio": null,
+   "gastos": 0,
+   "vista": "Bahía y montaña",
+   "distanciaMar": 1200,
+   "distanciaAeropuerto": 27,
+   "seguridad": "Calle residencial",
+   "amenidades": [
+    "Uso residencial",
+    "Servicios a pie de lote",
+    "Orientación sur"
+   ],
+   "destacados": [
+    "Orientación sur",
+    "Precio reducido 8% en septiembre",
+    "A 5 min de Mónaco"
+   ],
+   "descripcion": "Terreno edificable con orientación sur en una calle residencial tranquila, con vista a la bahía y a la montaña. Tiene servicios a pie de lote y está a cinco minutos de Mónaco.",
+   "publicado": "2026-09-20",
+   "fotos": [
+    {
+     "id": "1603085429201-64dadaec4061",
+     "autor": "Éric Deschaintre",
+     "alt": "Terreno frente al mar"
+    },
+    {
+     "id": "1730126680640-bb6c3549d775",
+     "autor": "Chris Weiher",
+     "alt": "Vista al mar entre árboles"
+    },
+    {
+     "id": "1772544152341-27580cb5373f",
+     "autor": "Shalev Cohen",
+     "alt": "Terreno arbolado en ladera"
+    }
+   ],
+   "mediosBanos": 0,
+   "m2": 0
+  }
+ ]
+}
